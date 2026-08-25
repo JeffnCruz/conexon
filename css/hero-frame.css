@@ -1,0 +1,80 @@
+/*
+ * hero-frame.css
+ * Decorações visuais do frame da seção Hero:
+ * linhas horizontais (hero-frame), linhas laterais (side-line-*)
+ * e marcadores de cruz nos cantos (corner-cross).
+ * Em mobile (< 768 px) todas são ocultadas.
+ */
+
+/* ─── Linhas horizontais do frame ────────────────────────────────────────── */
+.hero-frame::before,
+.hero-frame::after {
+  content: "";
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  height: 1px;
+  background: var(--color-border-frame);
+  pointer-events: none;
+}
+
+.hero-frame::before {
+  top: 44px;
+}
+
+.hero-frame::after {
+  bottom: 34px;
+}
+
+/* ─── Linhas laterais ────────────────────────────────────────────────────── */
+.side-line-left,
+.side-line-right {
+  position: absolute;
+  top: 18px;
+  bottom: 18px;
+  width: 1px;
+  background: var(--color-border-frame);
+  pointer-events: none;
+}
+
+.side-line-left  { left:  42px; }
+.side-line-right { right: 42px; }
+
+/* ─── Marcadores de cruz nos cantos ──────────────────────────────────────── */
+.corner-cross {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  pointer-events: none;
+}
+
+.corner-cross::before,
+.corner-cross::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  background: var(--color-frame-cross);
+  transform: translate(-50%, -50%);
+}
+
+.corner-cross::before {
+  width:  1px;
+  height: 12px;
+}
+
+.corner-cross::after {
+  width:  12px;
+  height: 1px;
+}
+
+/* ─── Ocultar decorações em mobile ──────────────────────────────────────── */
+@media (max-width: 767px) {
+  .hero-frame::before,
+  .hero-frame::after,
+  .side-line-left,
+  .side-line-right,
+  .corner-cross {
+    display: none;
+  }
+}

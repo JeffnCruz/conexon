@@ -1,0 +1,135 @@
+/*
+ * tokens.css
+ * Design tokens extraídos do index.html.
+ * Nomes semânticos — descrevem FUNÇÃO, não a cor em si.
+ * Ao trocar de paleta, altere apenas este arquivo.
+ *
+ * Paleta oficial ConexOn (aprovada em 2026-08-18):
+ *   #0D1321 — escuro da marca (texto principal, cards escuros, fundos escuros)
+ *   #0057FF — primária (botões, links, destaques de texto em headline)
+ *   #00B4FF — acento (gradientes, ícones, elementos gráficos sobre fundo escuro)
+ *   #F2F4F7 — superfície clara (fundos de seção, cards claros, divisores)
+ */
+
+:root {
+
+  /* ─── Paleta primária (azul ação) ─────────────────────────────────────── */
+  /* Gradiente do botão CTA principal: from → mid → to */
+  --color-action-from:      #0057FF;   /* primária pura */
+  --color-action-mid:       #0076E0;   /* interpolação visual entre primária e acento */
+  --color-action-to:        #00B4FF;   /* acento — fim do gradiente */
+
+  /* Cor única para uso plano (ícones, bordas ativas, texto de destaque) */
+  --color-primary:          #0057FF;
+
+  /* Acento — apenas sobre fundo escuro ou em elementos gráficos */
+  /* NUNCA usar como texto sobre fundo claro (contraste < 4.5:1) */
+  --color-accent:           #00B4FF;
+
+  /* Variante escura da marca — texto principal, cards escuros */
+  --color-brand-deep:       #0D1321;
+
+  /* Crosshair / decoração de frame */
+  --color-frame-cross:      #0D1321;
+
+
+  /* ─── Superfícies ──────────────────────────────────────────────────────── */
+  --color-surface:          #ffffff;
+  /* Superfície clara — fundos de seção, cards claros, gradiente botão secundário */
+  --color-surface-tint:     #F2F4F7;
+
+
+  /* ─── Bordas ───────────────────────────────────────────────────────────── */
+  /* Borda padrão do botão secundário — derivada de #0057FF */
+  --color-border-subtle:    #cfdaff;
+  /* Borda no estado hover do botão secundário */
+  --color-border-hover:     #a3b8ff;
+  /* Borda do ícone dentro do botão secundário */
+  --color-border-icon:      #dce6ff;
+  /* Borda do ícone no hover do botão secundário */
+  --color-border-icon-hover: #b8c9ff;
+  /* Linha decorativa do frame/guia */
+  --color-border-frame:     rgba(148, 163, 184, 0.26);
+
+
+  /* ─── Texto ────────────────────────────────────────────────────────────── */
+  /* Escuro da marca — texto sobre fundos claros */
+  --color-text-strong:      #0D1321;
+  /* Texto secundário / muted (Tailwind slate-500) */
+  --color-text-muted:       #64748b;
+  /* Placeholder e meta-texto (Tailwind slate-400) */
+  --color-text-faint:       #94a3b8;
+
+
+  /* ─── Sombras ──────────────────────────────────────────────────────────── */
+  /* Cards brancos sobre fundo branco (dashboard-card) */
+  --shadow-card-strong:     0 24px 70px rgba(15, 23, 42, 0.08);
+  /* Cards sobre fundos claros (soft-card) */
+  --shadow-card-soft:       0 16px 44px rgba(15, 23, 42, 0.07);
+  /* Card azul escuro flutuante (blue-card) — derivada de #0057FF */
+  --shadow-card-primary:    0 30px 60px rgba(0, 87, 255, 0.34),
+                            inset 0 1px 0 rgba(255, 255, 255, 0.28);
+
+  /* Botão CTA primário em repouso — derivada de #0057FF */
+  --shadow-btn-action:      0 18px 38px rgba(0, 87, 255, 0.28),
+                            inset 0 1px 0 rgba(255, 255, 255, 0.32);
+  /* Botão CTA primário em hover */
+  --shadow-btn-action-hover: 0 22px 48px rgba(0, 87, 255, 0.36),
+                             inset 0 1px 0 rgba(255, 255, 255, 0.38);
+
+  /* Botão secundário em repouso */
+  --shadow-btn-secondary:   0 14px 32px rgba(15, 23, 42, 0.07),
+                            inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  /* Botão secundário em hover */
+  --shadow-btn-secondary-hover: 0 18px 42px rgba(15, 23, 42, 0.1),
+                                inset 0 1px 0 rgba(255, 255, 255, 1);
+
+
+  /* ─── Border-radius ────────────────────────────────────────────────────── */
+  /* Botões grandes e cards de conteúdo */
+  --radius-btn:             18px;
+  /* Ícone-badge dentro do botão */
+  --radius-btn-icon:        14px;
+  /* Cards menores e decorações */
+  --radius-card-sm:         16px;
+
+
+  /* ─── Layout ───────────────────────────────────────────────────────────── */
+  /* Largura máxima do container principal */
+  --container-max:          1600px;
+
+
+  /* ─── Tipografia ────────────────────────────────────────────────────────── */
+  /* Stack do corpo de texto */
+  --font-body: Inter, ui-sans-serif, system-ui, -apple-system,
+               BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  /*
+   * Stack dos headings.
+   * Hoje espelha --font-body (Inter em ambos).
+   * Ao rebranding, troque apenas este token sem afetar o corpo.
+   * Ex.: --font-heading: "Bricolage Grotesque", serif;
+   */
+  --font-heading: Inter, ui-sans-serif, system-ui, -apple-system,
+                  BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+
+  /* ─── Cards escuros centrais com gradiente e efeitos em camadas ─────────── */
+  /* 1. Camada de base: Gradiente diagonal 135° de #0057FF para azul-marinho (#092764) */
+  --color-card-dark-from:       #0057FF;
+  --color-card-dark-to:         #092764;
+
+  /* 2. Camada de iluminação: Halo radial suave de #00B4FF no canto superior direito */
+  --color-card-dark-glow:       rgba(0, 180, 255, 0.15);
+
+  /* Composição do fundo (halo radial + gradiente base) */
+  --bg-card-dark-featured:      radial-gradient(circle at 100% 0%, var(--color-card-dark-glow) 0%, transparent 65%),
+                                linear-gradient(135deg, var(--color-card-dark-from) 0%, var(--color-card-dark-to) 100%);
+
+  /* 3. Camada de textura: Malha pontilhada clara em CSS com fade central */
+  --color-card-dark-dot:        rgba(255, 255, 255, 0.12);
+  --size-card-dark-dot:         18px 18px;
+  --pattern-card-dark-dots:     radial-gradient(circle, var(--color-card-dark-dot) 1px, transparent 1px);
+  --mask-card-dark-lateral:     linear-gradient(to right, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.25) 16%, transparent 34%, transparent 66%, rgba(0, 0, 0, 0.25) 84%, rgba(0, 0, 0, 0.8) 100%);
+}
+

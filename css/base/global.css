@@ -1,0 +1,59 @@
+/*
+ * global.css
+ * Estilos base globais: reset mínimo, tipografia, scroll e
+ * as três classes de sombra de card que não são Tailwind.
+ * Depende de tokens.css (deve ser importado depois).
+ */
+
+/* ─── Scroll ─────────────────────────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ─── Tipografia base ─────────────────────────────────────────────────────── */
+body {
+  font-family: var(--font-body);
+}
+
+/* ─── Utilitários de sombra de card ──────────────────────────────────────── */
+/*
+ * Estas três classes são aplicadas via atributo class no HTML.
+ * Tailwind não gera box-shadow com este nível de customização,
+ * por isso existem como CSS explícito.
+ */
+
+/* Card branco sobre fundo branco (ex.: dashboard hero) */
+.shadow-card-strong {
+  box-shadow: var(--shadow-card-strong);
+}
+
+/* Card branco sobre fundos levemente coloridos */
+.shadow-card-soft {
+  box-shadow: var(--shadow-card-soft);
+}
+
+/* Card azul escuro flutuante (ex.: "Ready to fund" no hero) */
+.shadow-card-primary {
+  box-shadow: var(--shadow-card-primary);
+}
+
+/* ─── Card Escuro Destacado (3 camadas: gradiente diagonal, halo radial e textura lateral) ─── */
+.card-dark-featured {
+  position: relative;
+  background: var(--bg-card-dark-featured);
+  box-shadow: var(--shadow-card-primary);
+  overflow: hidden;
+}
+
+.card-dark-featured::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: var(--pattern-card-dark-dots);
+  background-size: var(--size-card-dark-dot);
+  -webkit-mask-image: var(--mask-card-dark-lateral);
+  mask-image: var(--mask-card-dark-lateral);
+  z-index: 1;
+}
+

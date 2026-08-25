@@ -1,0 +1,2258 @@
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mídia indoor, totem e cartazeamento digital | ConexOn</title>
+  <meta name="description"
+    content="Telas digitais, totens interativos e cartazes impressos na própria loja. Você não compra equipamento: recebe tudo instalado, com software e suporte inclusos.">
+  <meta property="og:title" content="Toda a sua comunicação, com um só fornecedor">
+  <meta property="og:description"
+    content="Telas digitais, totens interativos e cartazes impressos na própria loja. Você não compra equipamento: recebe tudo instalado, com software e suporte inclusos.">
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <link rel="preload" as="image" href="assets/images/hero-conexon.webp">
+  <link rel="stylesheet" href="css/base/tokens.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap"
+    rel="stylesheet">
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    .hero-frame::before,
+    .hero-frame::after {
+      content: "";
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      height: 1px;
+      background: rgba(148, 163, 184, 0.26);
+      pointer-events: none;
+    }
+
+    .hero-frame::before {
+      top: 44px;
+    }
+
+    .hero-frame::after {
+      bottom: 34px;
+    }
+
+    .side-line-left,
+    .side-line-right {
+      position: absolute;
+      top: 18px;
+      bottom: 18px;
+      width: 1px;
+      background: rgba(148, 163, 184, 0.26);
+      pointer-events: none;
+    }
+
+    .side-line-left {
+      left: 42px;
+    }
+
+    .side-line-right {
+      right: 42px;
+    }
+
+    .corner-cross {
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      pointer-events: none;
+    }
+
+    .corner-cross::before,
+    .corner-cross::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      background: #020617;
+      transform: translate(-50%, -50%);
+    }
+
+    .corner-cross::before {
+      width: 1px;
+      height: 12px;
+    }
+
+    .corner-cross::after {
+      width: 12px;
+      height: 1px;
+    }
+
+    .dashboard-card {
+      box-shadow: 0 24px 70px rgba(15, 23, 42, 0.08);
+    }
+
+    .soft-card {
+      box-shadow: 0 16px 44px rgba(15, 23, 42, 0.07);
+    }
+
+    .blue-card {
+      box-shadow: 0 30px 60px rgba(0, 87, 255, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.28);
+    }
+
+    /* Card escuro destacado (Totem / Cartazeamento / Como contratar) */
+    .card-dark-featured {
+      position: relative;
+      background: var(--bg-card-dark-featured);
+      box-shadow: var(--shadow-card-primary);
+      overflow: hidden;
+    }
+
+    .card-dark-featured::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image: var(--pattern-card-dark-dots);
+      background-size: var(--size-card-dark-dot);
+      -webkit-mask-image: var(--mask-card-dark-lateral);
+      mask-image: var(--mask-card-dark-lateral);
+      z-index: 1;
+    }
+
+
+    @media (max-width: 767px) {
+
+      .hero-frame::before,
+      .hero-frame::after,
+      .side-line-left,
+      .side-line-right,
+      .corner-cross {
+        display: none;
+      }
+    }
+
+    /* ─── Formulário de contato ─────────────────────────────────────────────── */
+
+    /* Foco unificado: inputs, selects e textarea */
+    #contact-form input:focus,
+    #contact-form select:focus,
+    #contact-form textarea:focus {
+      outline: none;
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px rgba(0, 87, 255, 0.12);
+    }
+
+    /* Select: remover aparência nativa e adicionar chevron customizado */
+    .form-select-wrapper {
+      position: relative;
+    }
+
+    .form-select-wrapper::after {
+      content: "";
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 16px;
+      height: 16px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-size: 16px 16px;
+      pointer-events: none;
+    }
+
+    #contact-form select {
+      /* Remove aparência nativa (Chrome, Safari, Firefox) */
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      /* Padding direito extra para não sobrepor o chevron */
+      padding-right: 2.75rem;
+      /* Cursor de ponteiro para indicar interatividade */
+      cursor: pointer;
+    }
+
+    /* Texto de placeholder do select (option vazia) */
+    #contact-form select.select-placeholder {
+      color: #94a3b8;
+      /* slate-400 — mesma cor dos placeholders dos inputs */
+    }
+
+    #contact-form select:not(.select-placeholder) {
+      color: #020617;
+      /* slate-950 — cor normal ao selecionar */
+    }
+  </style>
+</head>
+
+<body class="min-h-screen bg-white text-slate-950 antialiased">
+  <main class="overflow-hidden relative">
+    <section class="relative z-10 mx-auto w-full max-w-[1600px] px-5 sm:px-9 lg:px-16">
+      <div
+        class="pointer-events-none absolute left-5 top-0 hidden h-full w-px bg-slate-200/80 sm:left-9 md:block lg:left-16">
+      </div>
+      <div
+        class="pointer-events-none absolute right-5 top-0 hidden h-full w-px bg-slate-200/80 sm:right-9 md:block lg:right-16">
+      </div>
+      <header
+        class="flex lg:pt-8 lg:pb-8 lg:pl-16 lg:pr-16 border-slate-200/80 border-b pt-8 pr-16 pb-8 pl-16 items-center justify-between">
+        <a href="/" class="flex items-center" aria-label="ConexOn — tecnologia para comunicação digital">
+          <svg xmlns="http://www.w3.org/2000/svg" width="712" height="139" fill="none" viewBox="0 0 712 139"
+            class="h-7 w-auto sm:h-8" role="img" aria-label="ConexOn — tecnologia para comunicação digital">
+            <path fill="#0d1321"
+              d="M43.95 138.832v-15.791h1.738l7.124 11.99H52l7.068-11.99h1.739v15.791H58.87v-12.72h.337l-6.38 10.742H51.9l-6.493-10.742h.449v12.72h-1.935zM77.578 120.741l3.828-3.463h2.65l-4.53 3.463h-1.962zm.84 18.091v-15.791h2.02v15.791zM98.052 138.832v-15.791h6.633c1.795 0 3.323.337 4.614.996s2.271 1.585 2.973 2.763q1.051 1.766 1.051 4.122c0 1.571-.35 2.973-1.051 4.151-.702 1.178-1.697 2.104-2.973 2.763-1.291.659-2.819.996-4.614.996zm2.005-1.683h4.53c1.416 0 2.622-.267 3.632-.786 1.009-.518 1.767-1.248 2.286-2.187.518-.94.785-2.02.785-3.268s-.267-2.341-.785-3.267c-.519-.926-1.291-1.655-2.286-2.16s-2.216-.771-3.632-.771h-4.53zM129.338 138.832v-15.791h2.019v15.791zM146.082 138.832l7.292-15.791h1.991l7.293 15.791h-2.02l-6.633-14.711h.701l-6.661 14.711h-1.99zm3.071-4.081.589-1.627h9.003l.589 1.627zM196.482 138.832v-15.791h2.019v15.791zM216.115 138.832v-15.791h1.655l10.742 13.308h-.786v-13.308h2.02v15.791h-1.683l-10.742-13.337h.813v13.337zM247.345 138.832v-15.791h6.633c1.795 0 3.324.337 4.614.996s2.272 1.585 2.973 2.763q1.051 1.766 1.051 4.122c0 1.571-.35 2.973-1.051 4.151s-1.697 2.104-2.973 2.763c-1.29.659-2.819.996-4.614.996zm2.019-1.683h4.53c1.416 0 2.622-.267 3.632-.786 1.01-.518 1.767-1.248 2.286-2.187.519-.94.785-2.02.785-3.268s-.266-2.341-.785-3.267-1.29-1.655-2.286-2.16-2.216-.771-3.632-.771h-4.53zM285.545 139c-1.627 0-3.071-.351-4.362-1.052s-2.299-1.655-3.029-2.875c-.743-1.22-1.107-2.608-1.107-4.151s.364-2.93 1.107-4.136c.73-1.206 1.753-2.174 3.029-2.875 1.291-.701 2.735-1.066 4.334-1.066s3.071.351 4.347 1.066 2.286 1.669 3.015 2.875 1.108 2.594 1.108 4.136-.365 2.931-1.108 4.151a7.7 7.7 0 0 1-3.015 2.875c-1.276.701-2.721 1.052-4.319 1.052m-.028-1.739c1.248 0 2.356-.28 3.323-.827a5.93 5.93 0 0 0 2.286-2.272c.561-.954.841-2.034.841-3.225s-.28-2.314-.841-3.268a6.05 6.05 0 0 0-2.286-2.244c-.967-.547-2.075-.827-3.323-.827s-2.328.28-3.31.827a6 6 0 0 0-2.3 2.244c-.561.954-.841 2.047-.841 3.268s.28 2.271.841 3.225c.561.967 1.333 1.711 2.3 2.272.982.547 2.09.827 3.31.827M316.915 139c-1.627 0-3.071-.351-4.361-1.052s-2.3-1.655-3.029-2.875c-.744-1.22-1.108-2.608-1.108-4.151s.364-2.93 1.108-4.136c.729-1.206 1.753-2.174 3.029-2.875 1.29-.701 2.734-1.066 4.333-1.066s3.071.351 4.347 1.066 2.286 1.669 3.015 2.875 1.108 2.594 1.108 4.136-.365 2.931-1.108 4.151a7.7 7.7 0 0 1-3.015 2.875c-1.276.701-2.72 1.052-4.319 1.052m-.028-1.739c1.248 0 2.356-.28 3.323-.827a5.93 5.93 0 0 0 2.286-2.272c.561-.954.842-2.034.842-3.225s-.281-2.314-.842-3.268a6.05 6.05 0 0 0-2.286-2.244c-.967-.547-2.075-.827-3.323-.827s-2.328.28-3.31.827a6 6 0 0 0-2.3 2.244c-.56.954-.841 2.047-.841 3.268s.281 2.271.841 3.225c.561.967 1.333 1.711 2.3 2.272.982.547 2.09.827 3.31.827M341.372 123.041h6.128c1.374 0 2.552.211 3.534.645s1.739 1.052 2.272 1.865c.547.814.813 1.795.813 2.945s-.266 2.09-.813 2.903-1.304 1.445-2.272 1.879c-.982.435-2.16.645-3.534.645h-5.006l.897-.897v5.82h-2.019zm2.019 10.167-.785-.953h4.81c1.528 0 2.692-.337 3.492-.996s1.206-1.585 1.206-2.777-.407-2.145-1.206-2.79c-.8-.659-1.964-.982-3.492-.982h-4.81l.785-.954zm8.807 5.624-4.137-5.736h2.216l4.109 5.736zM70.804 101.81H28.538c-10.181 0-17.488-2.216-21.905-6.633C2.216 90.759 0 83.453 0 73.272v-21.75c0-10.181 2.216-17.487 6.633-21.904s11.724-6.634 21.905-6.634h42.266v17.277H31.623q-3.703 0-6.016.463c-1.543.309-2.72.87-3.548 1.697s-1.389 2.005-1.697 3.548q-.463 2.314-.463 6.016V72.81q0 3.702.463 6.016c.309 1.542.87 2.72 1.697 3.548s2.005 1.388 3.548 1.696q2.314.463 6.016.463h39.181zM87.618 51.522c0-10.181 2.216-17.487 6.633-21.904 4.418-4.418 11.724-6.634 21.905-6.634h21.904c10.083 0 17.333 2.23 21.751 6.718 4.417 4.473 6.633 11.751 6.633 21.82v21.75c0 10.083-2.216 17.361-6.633 21.835-4.418 4.473-11.668 6.717-21.751 6.717h-21.904c-10.181 0-17.487-2.216-21.905-6.633-4.417-4.417-6.633-11.724-6.633-21.905zm19.9 21.288q0 3.702.462 6.016c.309 1.542.87 2.72 1.697 3.548s2.005 1.388 3.548 1.696q2.314.463 6.016.463h15.58q3.702 0 6.016-.463c1.543-.308 2.749-.87 3.618-1.696.87-.828 1.445-2.006 1.697-3.548q.379-2.314.379-6.016V51.985q0-3.702-.379-6.016c-.252-1.543-.827-2.72-1.697-3.548-.869-.828-2.089-1.389-3.618-1.697q-2.314-.462-6.016-.463h-15.58q-3.702 0-6.016.463c-1.543.309-2.721.87-3.548 1.697s-1.388 2.005-1.697 3.548q-.462 2.314-.462 6.016zM245.732 101.81V51.985q0-3.702-.463-6.016c-.308-1.543-.869-2.72-1.696-3.548-.828-.828-2.006-1.389-3.548-1.697q-2.314-.462-6.016-.463H219.2q-3.702 0-6.016.463c-1.543.309-2.721.87-3.548 1.697s-1.388 2.005-1.697 3.548q-.462 2.314-.463 6.016v49.825h-19.899V51.522c0-10.181 2.216-17.487 6.633-21.904 4.418-4.418 11.724-6.634 21.905-6.634h20.979c10.181 0 17.487 2.216 21.904 6.633 4.418 4.418 6.633 11.724 6.633 21.905v50.288zM286.302 49.825c0-9.564 2.216-16.421 6.633-20.586s11.724-6.255 21.905-6.255h23.447c9.564 0 16.449 1.95 20.67 5.862s6.325 10.28 6.325 19.128v2.777c0 8.33-2.104 14.346-6.325 18.048s-11.106 5.553-20.67 5.553h-14.655c-3.8 0-7.222-.336-10.265-.996-3.029-.673-5.427-1.668-7.18-3.015v3.703c0 2.468.126 4.473.393 6.016.252 1.542.827 2.72 1.697 3.548.869.827 2.089 1.388 3.618 1.696q2.313.463 6.016.463h37.947v16.043h-41.032c-10.181 0-17.488-2.244-21.905-6.717-4.417-4.474-6.633-11.752-6.633-21.835V49.811zm19.899-.771c0 2.061.126 3.73.393 5.02.252 1.29.771 2.286 1.542 3.001.772.715 1.823 1.206 3.156 1.459 1.332.252 3.085.392 5.244.392h18.357c2.16 0 3.941-.126 5.315-.392q2.082-.379 3.239-1.389c.772-.673 1.29-1.64 1.543-2.93s.393-2.903.393-4.853c0-2.061-.127-3.702-.393-4.936-.253-1.234-.771-2.187-1.543-2.86q-1.157-1.011-3.155-1.389c-1.332-.252-3.141-.393-5.399-.393h-18.357c-2.159 0-3.926.099-5.315.309-1.388.21-2.44.645-3.155 1.318s-1.206 1.613-1.458 2.847c-.253 1.234-.393 2.833-.393 4.782zM538.569 51.522c0-5.245.463-9.648 1.388-13.182.926-3.534 2.497-6.423 4.712-8.639 2.216-2.215 5.091-3.786 8.639-4.697 3.548-.926 7.951-1.389 13.196-1.389h18.665c5.245 0 9.648.463 13.182 1.389 3.548.925 6.423 2.496 8.638 4.697 2.216 2.216 3.787 5.091 4.712 8.639.926 3.548 1.388 7.937 1.388 13.182v22.367c0 5.245-.462 9.648-1.388 13.196s-2.496 6.423-4.712 8.639-5.09 3.786-8.638 4.712-7.951 1.388-13.182 1.388h-18.665c-5.245 0-9.648-.463-13.196-1.388-3.548-.926-6.423-2.497-8.639-4.712-2.215-2.216-3.786-5.09-4.712-8.639s-1.388-7.951-1.388-13.196zm11.107 23.447c0 3.394.238 6.199.701 8.414.463 2.216 1.332 3.955 2.622 5.245s3.029 2.16 5.245 2.622c2.216.463 5.02.701 8.414.701h18.357c3.393 0 6.198-.238 8.414-.7 2.215-.464 3.954-1.333 5.244-2.623 1.291-1.29 2.16-3.03 2.623-5.245s.701-5.02.701-8.414V50.442c0-3.394-.238-6.198-.701-8.414s-1.332-3.954-2.623-5.245c-1.29-1.29-3.029-2.16-5.244-2.622-2.216-.463-5.021-.701-8.414-.701h-18.357c-3.394 0-6.198.238-8.414.7-2.216.464-3.955 1.333-5.245 2.623s-2.159 3.03-2.622 5.245-.701 5.02-.701 8.414zM700.231 101.81V50.442c0-3.394-.239-6.198-.701-8.414-.463-2.216-1.333-3.954-2.623-5.245s-3.029-2.16-5.245-2.622c-2.215-.463-5.02-.701-8.414-.701h-16.505c-3.394 0-6.199.238-8.414.7-2.216.464-3.955 1.333-5.245 2.623s-2.16 3.03-2.622 5.245c-.463 2.216-.702 5.02-.702 8.414v51.368h-11.106V51.522c0-5.245.463-9.648 1.388-13.182.926-3.534 2.496-6.423 4.712-8.639s5.091-3.786 8.639-4.697c3.547-.926 7.951-1.389 13.196-1.389h16.968c5.245 0 9.648.463 13.182 1.389 3.548.925 6.409 2.496 8.568 4.697 2.16 2.216 3.73 5.091 4.698 8.639.982 3.548 1.458 7.937 1.458 13.182v50.288h-11.26z" />
+            <path fill="#0057ff" d="m411.068 0 63.638 64.494-35.633 37.33h-42.435l35.648-36.475L366.95 0z" />
+            <path fill="#00b4ff"
+              d="m460.571 43.136 26.307-26.308h34.793L478.394 60.96zM459.771 86.553l18.665-18.666 59.403 58.548h-38.185z" />
+          </svg>
+        </a>
+        <nav class="hidden items-center gap-10 text-sm font-medium text-slate-950 xl:flex">
+          <a href="#solucoes" class="transition hover:text-blue-700">
+            Soluções
+          </a>
+          <a href="#segmentos" class="transition hover:text-blue-700">
+            Para quem é
+          </a>
+          <a href="#formatos" class="transition hover:text-blue-700">
+            Como contratar
+          </a>
+          <a href="#faq" class="transition hover:text-blue-700">
+            Dúvidas
+          </a>
+        </nav>
+        <div class="flex items-center gap-3">
+          <a href="#proposta"
+            class="group hidden sm:inline-flex items-center justify-center overflow-hidden text-[15px] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_22px_48px_rgba(0,87,255,0.36),inset_0_1px_0_rgba(255,255,255,0.38)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/25 focus-visible:ring-offset-2 active:translate-y-0 active:scale-[0.99] motion-reduce:transition-none font-semibold text-white tracking-[-0.02em] bg-gradient-to-br from-[var(--color-action-from)] via-[var(--color-action-mid)] to-[var(--color-action-to)] h-12 w-auto rounded-[16px] pt-0 pr-2.5 pb-0 pl-5 relative shadow-[0_18px_38px_rgba(0,87,255,0.28),inset_0_1px_0_rgba(255,255,255,0.32)]"
+            aria-label="Solicitar proposta">
+            <span
+              class="pointer-events-none absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-white/24 to-transparent opacity-80"></span>
+            <span
+              class="pointer-events-none absolute -right-12 -top-20 h-36 w-36 bg-white/20 blur-2xl transition-transform duration-500 group-hover:translate-x-3 group-hover:translate-y-3"
+              style="border-radius: 999px"></span>
+            <span class="relative z-10 whitespace-nowrap">Solicitar proposta</span>
+            <span
+              class="relative z-10 ml-3 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-[12px] border border-white/15 bg-white/15 shadow-[inset_0_1px_0_rgba(255,255,255,0.32)] backdrop-blur-md transition-all duration-300 group-hover:bg-white/22 group-hover:translate-x-0.5 motion-reduce:transition-none">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
+                class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 motion-reduce:transition-none">
+                <path d="M7 7h10v10"></path>
+                <path d="M7 17 17 7"></path>
+              </svg>
+            </span>
+          </a>
+          <button
+            class="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-950 shadow-sm xl:hidden"
+            aria-label="Open menu">
+            <i data-lucide="menu" class="h-5 w-5"></i>
+          </button>
+        </div>
+      </header>
+
+      <div
+        class="grid gap-12 lg:grid-cols-[0.88fr_1.12fr] lg:pb-32 lg:pt-24 pt-16 pr-16 pb-24 pl-16 gap-x-12 gap-y-12 items-center">
+        <div class="max-w-3xl">
+          <div
+            class="mb-7 inline-flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.08em] text-blue-700">
+            <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-blue-50">
+              <i data-lucide="sparkles" class="h-[18px] w-[18px]"></i>
+            </span>
+            MÍDIA INDOOR · TOTEM DIGITAL · CARTAZEAMENTO DIGITAL
+          </div>
+          <h1
+            class="max-w-[760px] text-[3.15rem] font-semibold leading-[1.12] tracking-[-0.065em] text-black sm:text-6xl lg:text-[4.55rem] xl:text-[5.05rem]">
+            Toda a sua comunicação, <span class="text-blue-700">com um só fornecedor.</span>
+          </h1>
+          <p class="mt-7 max-w-[590px] text-lg leading-8 text-slate-500 sm:text-xl">
+            Telas digitais, totens interativos e cartazes impressos na própria loja. Você não compra equipamento: recebe
+            tudo instalado, com software e suporte inclusos.
+          </p>
+          <div class="mt-9 flex flex-col gap-4 sm:flex-row sm:gap-5">
+            <!-- Primary Button -->
+            <a href="#proposta"
+              class="group inline-flex items-center justify-center overflow-hidden text-[16px] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_22px_48px_rgba(0,87,255,0.36),inset_0_1px_0_rgba(255,255,255,0.38)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/25 focus-visible:ring-offset-2 active:translate-y-0 active:scale-[0.99] motion-reduce:transition-none sm:w-auto font-semibold text-white tracking-[-0.02em] bg-gradient-to-br from-[var(--color-action-from)] via-[var(--color-action-mid)] to-[var(--color-action-to)] w-full h-14 rounded-[18px] pt-0 pr-3 pb-0 pl-7 relative shadow-[0_18px_38px_rgba(0,87,255,0.28),inset_0_1px_0_rgba(255,255,255,0.32)]"
+              aria-label="Solicitar proposta">
+              <span
+                class="pointer-events-none absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-white/24 to-transparent opacity-80"></span>
+
+              <span
+                class="pointer-events-none absolute -right-12 -top-20 h-36 w-36 bg-white/20 blur-2xl transition-transform duration-500 group-hover:translate-x-3 group-hover:translate-y-3"
+                style="border-radius: 999px"></span>
+
+              <span class="relative z-10 whitespace-nowrap">Solicitar proposta</span>
+
+              <span
+                class="relative z-10 ml-4 inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-[14px] border border-white/15 bg-white/15 shadow-[inset_0_1px_0_rgba(255,255,255,0.32)] backdrop-blur-md transition-all duration-300 group-hover:bg-white/22 group-hover:translate-x-0.5 motion-reduce:transition-none">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
+                  class="h-5 w-5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 motion-reduce:transition-none">
+                  <path d="M7 7h10v10"></path>
+                  <path d="M7 17 17 7"></path>
+                </svg>
+              </span>
+            </a>
+
+            <!-- Secondary Button -->
+            <a href="https://wa.me/5511982590000?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20ConexOn%20e%20gostaria%20de%20saber%20mais."
+              data-wa-section="hero"
+              class="btn-whatsapp group relative inline-flex h-14 w-full items-center justify-center overflow-hidden rounded-[18px] border border-[var(--color-border-subtle)] bg-gradient-to-b from-white to-[var(--color-surface-tint)] pl-7 pr-3 text-[16px] font-semibold tracking-[-0.02em] text-[var(--color-brand-deep)] shadow-[0_14px_32px_rgba(15,23,42,0.07),inset_0_1px_0_rgba(255,255,255,0.9)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[var(--color-border-hover)] hover:shadow-[0_18px_42px_rgba(15,23,42,0.1),inset_0_1px_0_rgba(255,255,255,1)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/20 focus-visible:ring-offset-2 active:translate-y-0 active:scale-[0.99] motion-reduce:transition-none sm:w-auto"
+              aria-label="Falar no WhatsApp">
+              <span
+                class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(59,130,246,0.12),transparent_55%)] opacity-80"></span>
+
+              <span class="relative z-10 whitespace-nowrap">Falar no WhatsApp</span>
+
+              <span
+                class="relative z-10 ml-4 inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-[14px] border border-[var(--color-border-icon)] bg-white shadow-[0_8px_20px_rgba(15,23,42,0.08),inset_0_1px_0_rgba(255,255,255,1)] transition-all duration-300 group-hover:scale-[1.03] group-hover:border-[var(--color-border-icon-hover)] motion-reduce:transition-none">
+                <i data-lucide="message-circle" class="h-5 w-5 text-[var(--color-brand-deep)]"></i>
+              </span>
+            </a>
+          </div>
+        </div>
+        <!-- Hero Image -->
+        <div
+          class="relative mx-auto h-[620px] w-full max-w-[760px] overflow-hidden rounded-[18px] border border-slate-200 shadow-[0_16px_44px_rgba(15,23,42,0.07)]">
+          <img src="assets/images/hero-conexon.webp"
+            alt="Corredor de supermercado com tela de mídia indoor suspensa, totem digital e cartazes de oferta nas gôndolas"
+            width="1520" height="1240" class="h-full w-full object-cover">
+        </div>
+      </div>
+
+      <!-- Cards de Produto (Roteador) -->
+      <div id="solucoes"
+        class="grid md:grid-cols-3 lg:pb-20 lg:pt-16 lg:pl-16 lg:pr-16 pt-16 pr-16 pb-20 pl-16 gap-x-5 gap-y-5 items-stretch">
+        <!-- Card 1: Mídia Indoor -->
+        <a href="#midia-indoor"
+          class="group flex flex-col h-full overflow-hidden rounded-[18px] border border-slate-200 bg-white/78 shadow-[0_12px_34px_rgba(15,23,42,0.035)] backdrop-blur transition hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-[0_18px_42px_rgba(15,23,42,0.06)]">
+          <div
+            class="relative w-full aspect-[2/1] md:aspect-[16/9] bg-slate-100 border-b border-slate-200/80 flex items-center justify-center overflow-hidden rounded-t-[18px]">
+            <!-- TODO: substituir por foto real do cliente -->
+            <img src="assets/images/card-midia-indoor.webp"
+              alt="Tela instalada em área de vendas exibindo conteúdo promocional" width="1200" height="675"
+              loading="lazy" class="absolute inset-0 h-full w-full object-cover rounded-t-[18px]">
+          </div>
+          <div class="flex flex-1 flex-col justify-between p-6">
+            <div>
+              <h3 class="text-base font-semibold text-[var(--color-brand-deep)]">Mídia Indoor</h3>
+              <p class="mt-2 text-sm leading-5 text-slate-500 min-h-[60px]">Telas com conteúdo gerenciado pela internet.
+                Programe por dia e horário e troque a campanha de onde você estiver.</p>
+            </div>
+            <div class="mt-6 flex items-center justify-between pt-4 border-t border-slate-100">
+              <span class="text-sm font-semibold text-blue-700">Ver mídia indoor</span>
+              <span
+                class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-slate-50 text-slate-400 transition group-hover:bg-blue-700 group-hover:text-white">
+                <i data-lucide="arrow-right" class="h-4 w-4"></i>
+              </span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Card 2: Totem Digital -->
+        <a href="#totem-digital"
+          class="group flex flex-col h-full overflow-hidden rounded-[18px] border border-slate-200 bg-white/78 shadow-[0_12px_34px_rgba(15,23,42,0.035)] backdrop-blur transition hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-[0_18px_42px_rgba(15,23,42,0.06)]">
+          <div
+            class="relative w-full aspect-[2/1] md:aspect-[16/9] bg-slate-100 border-b border-slate-200/80 flex items-center justify-center overflow-hidden rounded-t-[18px]">
+            <!-- TODO: substituir por foto real do cliente -->
+            <img src="assets/images/card-totem-digital.webp"
+              alt="Totem digital com tela sensível ao toque em corredor de loja" width="1200" height="675"
+              loading="lazy" class="absolute inset-0 h-full w-full object-cover rounded-t-[18px]">
+          </div>
+          <div class="flex flex-1 flex-col justify-between p-6">
+            <div>
+              <h3 class="text-base font-semibold text-[var(--color-brand-deep)]">Totem Digital</h3>
+              <p class="mt-2 text-sm leading-5 text-slate-500 min-h-[60px]">Tela sensível ao toque para o seu cliente
+                consultar sozinho o que ele precisa.</p>
+            </div>
+            <div class="mt-6 flex items-center justify-between pt-4 border-t border-slate-100">
+              <span class="text-sm font-semibold text-blue-700">Ver totem digital</span>
+              <span
+                class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-slate-50 text-slate-400 transition group-hover:bg-blue-700 group-hover:text-white">
+                <i data-lucide="arrow-right" class="h-4 w-4"></i>
+              </span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Card 3: Cartazeamento Digital -->
+        <a href="#cartazeamento-digital"
+          class="group flex flex-col h-full overflow-hidden rounded-[18px] border border-slate-200 bg-white/78 shadow-[0_12px_34px_rgba(15,23,42,0.035)] backdrop-blur transition hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-[0_18px_42px_rgba(15,23,42,0.06)]">
+          <div
+            class="relative w-full aspect-[2/1] md:aspect-[16/9] bg-slate-100 border-b border-slate-200/80 flex items-center justify-center overflow-hidden rounded-t-[18px]">
+            <!-- TODO: substituir por foto real do cliente -->
+            <img src="assets/images/card-cartazeamento.webp"
+              alt="Cartaz de oferta impresso aplicado na gôndola do supermercado" width="1200" height="675"
+              loading="lazy" class="absolute inset-0 h-full w-full object-cover rounded-t-[18px]">
+          </div>
+          <div class="flex flex-1 flex-col justify-between p-6">
+            <div>
+              <h3 class="text-base font-semibold text-[var(--color-brand-deep)]">Cartazeamento Digital</h3>
+              <p class="mt-2 text-sm leading-5 text-slate-500 min-h-[60px]">Cartaz de oferta com o preço vindo do seu
+                ERP, impresso na própria loja.</p>
+            </div>
+            <div class="mt-6 flex items-center justify-between pt-4 border-t border-slate-100">
+              <span class="text-sm font-semibold text-blue-700">Ver cartazeamento</span>
+              <span
+                class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-slate-50 text-slate-400 transition group-hover:bg-blue-700 group-hover:text-white">
+                <i data-lucide="arrow-right" class="h-4 w-4"></i>
+              </span>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Faixa de Prova Social (Carrossel de Logos + Tira de Fatos) -->
+      <section class="border-t border-slate-200 bg-white px-6 py-16 sm:px-9 lg:px-16 lg:py-20">
+        <div class="mx-auto max-w-[1600px]">
+          <style>
+            @keyframes marquee {
+              0% {
+                transform: translateX(0%);
+              }
+
+              100% {
+                transform: translateX(-50%);
+              }
+            }
+          </style>
+          <p class="text-center text-sm font-medium uppercase tracking-[0.12em] text-slate-400">
+            EMPRESAS QUE JÁ USAM A CONEXON
+          </p><!-- TODO: logos reais de clientes com autorização -->
+
+          <div class="mt-8 overflow-hidden relative"
+            style="-webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);">
+            <div class="flex w-[max-content] items-center" style="animation: marquee 40s linear infinite;">
+              <div class="flex shrink-0 items-center gap-12 pr-12">
+                <div
+                  class="flex h-12 w-36 items-center justify-center rounded-lg border border-slate-200/80 bg-slate-100 text-xs font-medium text-slate-400 select-none">
+                  Logo cliente 1</div>
+                <div
+                  class="flex h-12 w-36 items-center justify-center rounded-lg border border-slate-200/80 bg-slate-100 text-xs font-medium text-slate-400 select-none">
+                  Logo cliente 2</div>
+                <div
+                  class="flex h-12 w-36 items-center justify-center rounded-lg border border-slate-200/80 bg-slate-100 text-xs font-medium text-slate-400 select-none">
+                  Logo cliente 3</div>
+                <div
+                  class="flex h-12 w-36 items-center justify-center rounded-lg border border-slate-200/80 bg-slate-100 text-xs font-medium text-slate-400 select-none">
+                  Logo cliente 4</div>
+                <div
+                  class="flex h-12 w-36 items-center justify-center rounded-lg border border-slate-200/80 bg-slate-100 text-xs font-medium text-slate-400 select-none">
+                  Logo cliente 5</div>
+                <div
+                  class="flex h-12 w-36 items-center justify-center rounded-lg border border-slate-200/80 bg-slate-100 text-xs font-medium text-slate-400 select-none">
+                  Logo cliente 6</div>
+              </div>
+              <div class="flex shrink-0 items-center gap-12 pr-12">
+                <div
+                  class="flex h-12 w-36 items-center justify-center rounded-lg border border-slate-200/80 bg-slate-100 text-xs font-medium text-slate-400 select-none">
+                  Logo cliente 1</div>
+                <div
+                  class="flex h-12 w-36 items-center justify-center rounded-lg border border-slate-200/80 bg-slate-100 text-xs font-medium text-slate-400 select-none">
+                  Logo cliente 2</div>
+                <div
+                  class="flex h-12 w-36 items-center justify-center rounded-lg border border-slate-200/80 bg-slate-100 text-xs font-medium text-slate-400 select-none">
+                  Logo cliente 3</div>
+                <div
+                  class="flex h-12 w-36 items-center justify-center rounded-lg border border-slate-200/80 bg-slate-100 text-xs font-medium text-slate-400 select-none">
+                  Logo cliente 4</div>
+                <div
+                  class="flex h-12 w-36 items-center justify-center rounded-lg border border-slate-200/80 bg-slate-100 text-xs font-medium text-slate-400 select-none">
+                  Logo cliente 5</div>
+                <div
+                  class="flex h-12 w-36 items-center justify-center rounded-lg border border-slate-200/80 bg-slate-100 text-xs font-medium text-slate-400 select-none">
+                  Logo cliente 6</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tira de Fatos (faixa separada logo abaixo do carrossel, sem título próprio) -->
+          <div class="mt-12 pt-12 border-t border-slate-200/80 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            <div class="flex items-center gap-4 rounded-xl border border-slate-200/80 bg-slate-50/50 p-5">
+              <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-blue-100 text-blue-700">
+                <i data-lucide="map-pin" class="h-5 w-5"></i>
+              </span>
+              <p class="text-sm font-semibold text-[var(--color-brand-deep)]">Atendimento em todo o Brasil</p>
+            </div>
+
+            <div class="flex items-center gap-4 rounded-xl border border-slate-200/80 bg-slate-50/50 p-5">
+              <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-blue-100 text-blue-700">
+                <i data-lucide="refresh-cw" class="h-5 w-5"></i>
+              </span>
+              <p class="text-sm font-semibold text-[var(--color-brand-deep)]">Equipamento sempre em locação</p>
+            </div>
+
+            <div class="flex items-center gap-4 rounded-xl border border-slate-200/80 bg-slate-50/50 p-5">
+              <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-blue-100 text-blue-700">
+                <i data-lucide="wrench" class="h-5 w-5"></i>
+              </span>
+              <p class="text-sm font-semibold text-[var(--color-brand-deep)]">Instalação e suporte inclusos</p>
+            </div>
+
+            <div class="flex items-center gap-4 rounded-xl border border-slate-200/80 bg-slate-50/50 p-5">
+              <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-blue-100 text-blue-700">
+                <i data-lucide="layers" class="h-5 w-5"></i>
+              </span>
+              <p class="text-sm font-semibold text-[var(--color-brand-deep)]">Contrate um produto ou os três</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <!-- Seção 5: Mídia Indoor -->
+  <section id="midia-indoor" class="relative overflow-hidden bg-white">
+    <div class="sm:px-9 lg:pt-0 lg:pl-16 lg:pr-16 lg:pb-0 w-full max-w-[1600px] mx-auto pt-0 pr-16 pb-0 pl-16 relative">
+      <div
+        class="pointer-events-none absolute left-6 top-0 hidden h-full w-px bg-slate-200/80 md:block sm:left-9 lg:left-16">
+      </div>
+      <div
+        class="pointer-events-none absolute right-6 top-0 hidden h-full w-px bg-slate-200/80 md:block sm:right-9 lg:right-16">
+      </div>
+
+      <div class="relative border-x border-slate-200/80">
+        <!-- Section header -->
+        <div
+          class="grid gap-8 border-y sm:px-8 md:grid-cols-[1fr_0.72fr] md:items-end lg:px-16 lg:py-24 border-slate-200/80 pt-16 pr-6 pb-16 pl-6 gap-x-8 gap-y-8">
+          <div class="">
+            <div
+              class="mb-6 inline-flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.04em] text-blue-700">
+              <i data-lucide="tv" class="h-4 w-4"></i>
+              MÍDIA INDOOR
+            </div>
+
+            <h2
+              class="max-w-[640px] text-4xl font-semibold leading-[1.14] tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
+              Sua operação. Suas telas. <span class="text-blue-700">Seu conteúdo.</span>
+            </h2>
+          </div>
+
+          <p class="max-w-[430px] text-base leading-7 text-slate-500 md:justify-self-end">
+            Tela, player e plataforma de gestão em um contrato único de locação. Sua equipe publica vídeo, imagem, PDF,
+            YouTube, RSS e HTML em qualquer ponto da operação e agenda a exibição por dia e horário. Funciona em tela
+            deitada ou em pé. No local, só precisa de ponto de energia e internet.
+          </p>
+        </div>
+
+        <!-- Feature cards -->
+        <div class="grid border-b border-slate-200/80 md:grid-cols-2 xl:grid-cols-4">
+          <!-- Card 1 -->
+          <article
+            class="group transition-colors duration-300 hover:bg-slate-50/60 sm:px-8 md:border-r lg:px-10 lg:py-16 xl:border-b-0 xl:pl-10 xl:pr-10 xl:pt-10 xl:pb-10 border-slate-200/80 border-b pt-10 pr-10 pb-10 pl-10">
+            <div class="mb-9">
+              <div
+                class="relative h-[180px] overflow-hidden rounded-[30px] border border-slate-200/80 bg-gradient-to-br from-white via-blue-50/80 to-cyan-50/70 p-3 shadow-[0_24px_60px_rgba(15,23,42,0.09)] transition-all duration-500 group-hover:-translate-y-1 group-hover:border-blue-200/80">
+                <div class="flex h-full flex-col justify-center items-center text-center p-4">
+                  <i data-lucide="globe" class="h-10 w-10 text-blue-700 mb-2"></i>
+                  <span class="text-xs font-semibold text-[var(--color-brand-deep)]">Painel Web</span>
+                </div>
+              </div>
+            </div>
+            <div class="flex items-start justify-between gap-5">
+              <div>
+                <h3 class="text-base font-semibold text-[var(--color-brand-deep)]">Gestão remota</h3>
+                <p class="mt-3 max-w-[260px] text-sm leading-6 text-slate-500">Controle todos os pontos pelo navegador,
+                  de onde a sua equipe estiver.</p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article
+            class="group transition-colors duration-300 hover:bg-slate-50/60 sm:px-8 md:border-r lg:px-10 lg:py-16 xl:border-b-0 xl:pl-10 xl:pr-10 xl:pt-10 xl:pb-10 border-slate-200/80 border-b pt-10 pr-10 pb-10 pl-10">
+            <div class="mb-9">
+              <div
+                class="relative h-[180px] overflow-hidden rounded-[30px] border border-slate-200/80 bg-gradient-to-br from-white via-blue-50/80 to-cyan-50/70 p-3 shadow-[0_24px_60px_rgba(15,23,42,0.09)] transition-all duration-500 group-hover:-translate-y-1 group-hover:border-blue-200/80">
+                <div class="flex h-full flex-col justify-center items-center text-center p-4">
+                  <i data-lucide="calendar-clock" class="h-10 w-10 text-blue-700 mb-2"></i>
+                  <span class="text-xs font-semibold text-[var(--color-brand-deep)]">Programação</span>
+                </div>
+              </div>
+            </div>
+            <div class="flex items-start justify-between gap-5">
+              <div>
+                <h3 class="text-base font-semibold text-[var(--color-brand-deep)]">Agendamento</h3>
+                <p class="mt-3 max-w-[260px] text-sm leading-6 text-slate-500">Programe por horário, dia da semana ou
+                  data específica.</p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article
+            class="group transition-colors duration-300 hover:bg-slate-50/60 sm:px-8 md:border-r lg:px-10 lg:py-16 xl:border-b-0 xl:pl-10 xl:pr-10 xl:pt-10 xl:pb-10 border-slate-200/80 border-b pt-10 pr-10 pb-10 pl-10">
+            <div class="mb-9">
+              <div
+                class="relative h-[180px] overflow-hidden rounded-[30px] border border-slate-200/80 bg-gradient-to-br from-white via-blue-50/80 to-cyan-50/70 p-3 shadow-[0_24px_60px_rgba(15,23,42,0.09)] transition-all duration-500 group-hover:-translate-y-1 group-hover:border-blue-200/80">
+                <div class="flex h-full flex-col justify-center items-center text-center p-4">
+                  <i data-lucide="bar-chart-3" class="h-10 w-10 text-blue-700 mb-2"></i>
+                  <span class="text-xs font-semibold text-[var(--color-brand-deep)]">Métricas</span>
+                </div>
+              </div>
+            </div>
+            <div class="flex items-start justify-between gap-5">
+              <div>
+                <h3 class="text-base font-semibold text-[var(--color-brand-deep)]">Relatórios de exibição</h3>
+                <p class="mt-3 max-w-[260px] text-sm leading-6 text-slate-500">Acompanhe pelo painel o que foi exibido
+                  em cada ponto.</p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 4 -->
+          <article
+            class="group transition-colors duration-300 hover:bg-slate-50/60 sm:px-8 lg:pl-10 lg:pr-10 lg:pt-10 lg:pb-10 pt-10 pr-10 pb-10 pl-10">
+            <div class="mb-9">
+              <div
+                class="relative h-[180px] overflow-hidden rounded-[30px] border border-slate-200/80 bg-gradient-to-br from-white via-blue-50/80 to-cyan-50/70 p-3 shadow-[0_24px_60px_rgba(15,23,42,0.09)] transition-all duration-500 group-hover:-translate-y-1 group-hover:border-blue-200/80">
+                <div class="flex h-full flex-col justify-center items-center text-center p-4">
+                  <i data-lucide="headset" class="h-10 w-10 text-blue-700 mb-2"></i>
+                  <span class="text-xs font-semibold text-[var(--color-brand-deep)]">Atendimento</span>
+                </div>
+              </div>
+            </div>
+            <div class="flex items-start justify-between gap-5">
+              <div>
+                <h3 class="text-base font-semibold text-[var(--color-brand-deep)]">Suporte e manutenção</h3>
+                <p class="mt-3 max-w-[260px] text-sm leading-6 text-slate-500">Atendimento técnico em horário comercial
+                  e manutenção inclusa no equipamento locado.</p>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Hidden Image Alt Anchor for Media Indoor Image Specification -->
+        <img src="assets/images/card-midia-indoor.webp" alt="Tela instalada em área de vendas exibindo conteúdo promocional"
+          class="hidden">
+
+        <!-- CTA strip -->
+        <div
+          class="grid items-center gap-8 border-b border-slate-200/80 bg-[radial-gradient(circle_at_2px_2px,rgba(148,163,184,0.35)_1px,transparent_0)] bg-[length:56px_56px] px-6 py-16 sm:px-12 lg:px-16 lg:py-20 lg:grid-cols-[1fr_auto]">
+          <div class="">
+            <h3 class="text-3xl font-semibold leading-[1.14] tracking-tight text-slate-950 sm:text-4xl">
+              Sem prazo mínimo de contrato
+              <br>
+              <span class="text-blue-700">e sem investir em equipamento.</span>
+            </h3>
+
+            <p class="mt-2 text-base leading-7 text-slate-500">
+              Trocar a campanha não gera visita técnica nem custo novo de produção.
+            </p>
+          </div>
+
+          <a href="#proposta"
+            class="group inline-flex items-center justify-center overflow-hidden text-[16px] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_22px_48px_rgba(0,87,255,0.36),inset_0_1px_0_rgba(255,255,255,0.38)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/25 focus-visible:ring-offset-2 active:translate-y-0 active:scale-[0.99] motion-reduce:transition-none sm:w-auto font-semibold text-white tracking-[-0.02em] bg-gradient-to-br from-[var(--color-action-from)] via-[var(--color-action-mid)] to-[var(--color-action-to)] w-full h-14 rounded-[18px] pt-0 pr-3 pb-0 pl-7 relative shadow-[0_18px_38px_rgba(0,87,255,0.28),inset_0_1px_0_rgba(255,255,255,0.32)]"
+            aria-label="Solicitar proposta de mídia indoor">
+            <span
+              class="pointer-events-none absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-white/24 to-transparent opacity-80"></span>
+            <span
+              class="pointer-events-none absolute -right-12 -top-20 h-36 w-36 bg-white/20 blur-2xl transition-transform duration-500 group-hover:translate-x-3 group-hover:translate-y-3"
+              style="border-radius: 999px"></span>
+            <span class="relative z-10 whitespace-nowrap">Solicitar proposta</span>
+            <span
+              class="relative z-10 ml-4 inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-[14px] border border-white/15 bg-white/15 shadow-[inset_0_1px_0_rgba(255,255,255,0.32)] backdrop-blur-md transition-all duration-300 group-hover:bg-white/22 group-hover:translate-x-0.5 motion-reduce:transition-none">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
+                class="h-5 w-5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 motion-reduce:transition-none">
+                <path d="M7 7h10v10"></path>
+                <path d="M7 17 17 7"></path>
+              </svg>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção 6: Totem Digital -->
+  <section id="totem-digital" class="relative overflow-hidden bg-white">
+    <div class="sm:px-9 lg:pt-0 lg:pl-16 lg:pr-16 lg:pb-0 w-full max-w-[1600px] mx-auto pt-0 pr-16 pb-0 pl-16 relative">
+      <div
+        class="pointer-events-none absolute left-6 top-0 hidden h-full w-px bg-slate-200/80 sm:left-9 md:block lg:left-16">
+      </div>
+      <div
+        class="pointer-events-none absolute right-6 top-0 hidden h-full w-px bg-slate-200/80 sm:right-9 md:block lg:right-16">
+      </div>
+
+      <div class="relative border-y border-slate-200/80">
+        <!-- section header -->
+        <div class="grid gap-8 px-0 py-20 md:grid-cols-[0.9fr_1fr] md:items-end lg:px-12 lg:py-24">
+          <div class="">
+            <div
+              class="mb-6 inline-flex items-center gap-2.5 text-xs font-semibold uppercase tracking-[0.1em] text-blue-700">
+              <i data-lucide="touchpad" class="h-4 w-4"></i>
+              TOTEM DIGITAL
+            </div>
+
+            <h2
+              class="max-w-[620px] text-4xl font-semibold leading-[1.14] tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
+              A tela que responde <span class="text-blue-700">ao seu cliente.</span>
+            </h2>
+          </div>
+
+          <p class="max-w-[460px] text-base leading-7 text-slate-500 md:justify-self-end">
+            Mídia indoor comunica. O totem interage. O cliente se aproxima, toca e resolve sozinho: consulta um preço,
+            encontra o produto no corredor, tira uma senha, faz o check-in. A aplicação é desenvolvida para a sua
+            operação, em Android ou Windows.
+          </p>
+        </div>
+
+        <!-- process cards -->
+        <div class="grid border-t border-slate-200/80 lg:grid-cols-3">
+          <!-- step 01 -->
+          <article
+            class="group relative min-h-[420px] flex flex-col justify-between border-b border-slate-200/80 p-8 sm:p-10 lg:border-b-0 lg:border-r lg:p-14 transition hover:bg-slate-50/60">
+            <div class="flex items-center justify-between">
+              <span class="text-sm font-medium text-slate-400">01</span>
+              <span class="rounded-full bg-slate-50 px-3 py-1 text-xs font-medium text-slate-500 ring-1 ring-slate-200">
+                Interação
+              </span>
+            </div>
+
+            <div class="mt-12 flex h-44 items-center justify-center">
+              <div class="flex h-16 w-16 items-center justify-center rounded-2xl bg-blue-50 text-blue-700 shadow-sm">
+                <i data-lucide="touchpad" class="h-8 w-8"></i>
+              </div>
+            </div>
+
+            <div class="mt-10">
+              <h3 class="text-2xl font-semibold leading-tight tracking-tight text-slate-950">
+                Tela sensível ao toque
+              </h3>
+              <p class="mt-4 max-w-[360px] text-sm leading-6 text-slate-500">
+                O cliente busca a informação que quer, na hora, sem depender de um atendente livre.
+              </p>
+            </div>
+          </article>
+
+          <!-- step 02 -->
+          <article
+            class="card-dark-featured group relative min-h-[420px] flex flex-col justify-between overflow-hidden border-b border-slate-200/80 p-8 sm:p-10 lg:border-b-0 lg:border-r lg:p-14 text-white">
+            <div class="relative z-10 flex items-center justify-between">
+              <span class="text-sm font-medium text-white/80">02</span>
+              <span class="rounded-full bg-white/20 px-3 py-1 text-xs font-medium text-white ring-1 ring-white/25">
+                Customização
+              </span>
+            </div>
+
+            <div class="relative z-10 mt-12 flex h-44 items-center justify-center">
+              <div
+                class="flex h-16 w-16 items-center justify-center rounded-2xl bg-white text-[var(--color-primary)] shadow-sm">
+                <i data-lucide="code-2" class="h-8 w-8"></i>
+              </div>
+            </div>
+
+            <div class="relative z-10 mt-10">
+              <h3 class="text-2xl font-semibold leading-tight tracking-tight text-white">
+                Aplicação sob medida
+              </h3>
+              <p class="mt-4 max-w-[360px] text-sm leading-6 text-blue-50">
+                O totem não vem com um pacote fechado. Desenvolvemos a aplicação conforme o seu segmento e o que a
+                operação precisa que ele faça.
+              </p>
+            </div>
+          </article>
+
+          <!-- step 03 -->
+          <article
+            class="group relative min-h-[420px] flex flex-col justify-between p-8 sm:p-10 lg:p-14 transition hover:bg-slate-50/60">
+            <div class="flex items-center justify-between">
+              <span class="text-sm font-medium text-slate-400">03</span>
+              <span class="rounded-full bg-slate-50 px-3 py-1 text-xs font-medium text-slate-500 ring-1 ring-slate-200">
+                Conectividade
+              </span>
+            </div>
+
+            <div class="mt-12 flex h-44 items-center justify-center">
+              <div class="flex h-16 w-16 items-center justify-center rounded-2xl bg-blue-50 text-blue-700 shadow-sm">
+                <i data-lucide="qr-code" class="h-8 w-8"></i>
+              </div>
+            </div>
+
+            <div class="mt-10">
+              <h3 class="text-2xl font-semibold leading-tight tracking-tight text-slate-950">
+                Leve para o celular
+              </h3>
+              <p class="mt-4 max-w-[360px] text-sm leading-6 text-slate-500">
+                Qualquer conteúdo tocado no totem vira QR Code e continua no smartphone do cliente.
+              </p>
+            </div>
+          </article>
+        </div>
+
+        <!-- Hidden Image Alt Anchor for Totem Digital Image Specification -->
+        <img src="assets/images/card-totem-digital.webp" alt="Totem digital com tela sensível ao toque em corredor de loja"
+          class="hidden">
+
+        <!-- Linha de repertório -->
+        <div class="border-t border-slate-200/80 bg-slate-50/50 p-6 sm:p-8">
+          <p class="text-sm font-semibold uppercase tracking-wider text-slate-600 mb-3">Desenvolvemos aplicações como:
+          </p>
+          <p class="text-base font-medium text-slate-600 leading-7">
+            mapa interativo da loja · consulta de preço por código de barras · emissor de senhas · check-in e
+            pré-atendimento · catálogo e cardápio digital · clube de vantagens · pesquisa de satisfação · diretório e
+            mapa de lojas
+          </p>
+        </div>
+
+        <!-- bottom statement -->
+        <div
+          class="grid items-center gap-8 border-t border-slate-200/80 px-6 py-16 sm:px-12 lg:px-16 lg:py-20 lg:grid-cols-[1fr_auto]">
+          <div class="">
+            <p class="text-3xl font-semibold leading-tight tracking-tight text-slate-950">
+              Locação por evento ou permanente.
+            </p>
+            <p class="mt-2 text-base leading-7 text-slate-500">
+              Cada projeto é analisado individualmente, do ambiente de instalação ao modelo de equipamento e à
+              aplicação.
+            </p>
+          </div>
+
+          <a href="#proposta"
+            class="group inline-flex items-center justify-center overflow-hidden text-[16px] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_22px_48px_rgba(0,87,255,0.36),inset_0_1px_0_rgba(255,255,255,0.38)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/25 focus-visible:ring-offset-2 active:translate-y-0 active:scale-[0.99] motion-reduce:transition-none sm:w-auto font-semibold text-white tracking-[-0.02em] bg-gradient-to-br from-[var(--color-action-from)] via-[var(--color-action-mid)] to-[var(--color-action-to)] w-full h-14 rounded-[18px] pt-0 pr-3 pb-0 pl-7 relative shadow-[0_18px_38px_rgba(0,87,255,0.28),inset_0_1px_0_rgba(255,255,255,0.32)]"
+            aria-label="Solicitar proposta de totem">
+            <span
+              class="pointer-events-none absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-white/24 to-transparent opacity-80"></span>
+            <span
+              class="pointer-events-none absolute -right-12 -top-20 h-36 w-36 bg-white/20 blur-2xl transition-transform duration-500 group-hover:translate-x-3 group-hover:translate-y-3"
+              style="border-radius: 999px"></span>
+            <span class="relative z-10 whitespace-nowrap">Solicitar proposta</span>
+            <span
+              class="relative z-10 ml-4 inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-[14px] border border-white/15 bg-white/15 shadow-[inset_0_1px_0_rgba(255,255,255,0.32)] backdrop-blur-md transition-all duration-300 group-hover:bg-white/22 group-hover:translate-x-0.5 motion-reduce:transition-none">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
+                class="h-5 w-5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 motion-reduce:transition-none">
+                <path d="M7 7h10v10"></path>
+                <path d="M7 17 17 7"></path>
+              </svg>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção 7: Cartazeamento Digital (NOVA SEÇÃO) -->
+  <section id="cartazeamento-digital" class="relative overflow-hidden bg-white">
+    <div class="sm:px-9 lg:pt-0 lg:pl-16 lg:pr-16 lg:pb-0 w-full max-w-[1600px] mx-auto pt-0 pr-16 pb-0 pl-16 relative">
+      <div
+        class="pointer-events-none absolute left-6 top-0 hidden h-full w-px bg-slate-200/80 sm:left-9 md:block lg:left-16">
+      </div>
+      <div
+        class="pointer-events-none absolute right-6 top-0 hidden h-full w-px bg-slate-200/80 sm:right-9 md:block lg:right-16">
+      </div>
+
+      <div class="relative border-y border-slate-200/80">
+        <!-- section header -->
+        <div class="grid gap-8 px-0 py-20 md:grid-cols-[0.9fr_1fr] md:items-end lg:px-12 lg:py-24">
+          <div class="">
+            <div
+              class="mb-6 inline-flex items-center gap-2.5 text-xs font-semibold uppercase tracking-[0.1em] text-blue-700">
+              <i data-lucide="printer" class="h-4 w-4"></i>
+              CARTAZEAMENTO DIGITAL
+            </div>
+
+            <h2
+              class="max-w-[620px] text-4xl font-semibold leading-[1.14] tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
+              O preço sai do seu ERP e vai <span class="text-blue-700">direto para o cartaz.</span>
+            </h2>
+          </div>
+
+          <p class="max-w-[460px] text-base leading-7 text-slate-500 md:justify-self-end">
+            Sua equipe cria cartaz de oferta, tabloide, encarte, etiqueta de gôndola e cartaz de vitrine pelo navegador,
+            com layouts prontos e banco de imagens de produtos e imprime na própria loja, do A4 ao plotter. Sem
+            gráfica, sem tiragem mínima e sem digitar preço.
+          </p>
+        </div>
+
+        <!-- process cards -->
+        <div class="grid border-t border-slate-200/80 lg:grid-cols-3">
+          <!-- step 01 -->
+          <article
+            class="group relative min-h-[420px] flex flex-col justify-between border-b border-slate-200/80 p-8 sm:p-10 lg:border-b-0 lg:border-r lg:p-14 transition hover:bg-slate-50/60">
+            <div class="flex items-center justify-between">
+              <span class="text-sm font-medium text-slate-400">01</span>
+              <span class="rounded-full bg-slate-50 px-3 py-1 text-xs font-medium text-slate-500 ring-1 ring-slate-200">
+                Integração
+              </span>
+            </div>
+
+            <div class="mt-12 flex h-44 items-center justify-center">
+              <div class="flex h-16 w-16 items-center justify-center rounded-2xl bg-blue-50 text-blue-700 shadow-sm">
+                <i data-lucide="database" class="h-8 w-8"></i>
+              </div>
+            </div>
+
+            <div class="mt-10">
+              <h3 class="text-2xl font-semibold leading-tight tracking-tight text-slate-950">
+                Integrado ao seu ERP
+              </h3>
+              <p class="mt-4 max-w-[360px] text-sm leading-6 text-slate-500">
+                Preço e dados de produto vindos do seu sistema, por CSV ou API. Sem digitação e sem divergência entre o
+                cartaz e o caixa.
+              </p>
+            </div>
+          </article>
+
+          <!-- step 02 -->
+          <article
+            class="card-dark-featured group relative min-h-[420px] flex flex-col justify-between overflow-hidden border-b border-slate-200/80 p-8 sm:p-10 lg:border-b-0 lg:border-r lg:p-14 text-white">
+            <div class="relative z-10 flex items-center justify-between">
+              <span class="text-sm font-medium text-white/80">02</span>
+              <span class="rounded-full bg-white/20 px-3 py-1 text-xs font-medium text-white ring-1 ring-white/25">
+                Formatos
+              </span>
+            </div>
+
+            <div class="relative z-10 mt-12 flex h-44 items-center justify-center">
+              <div
+                class="flex h-16 w-16 items-center justify-center rounded-2xl bg-white text-[var(--color-primary)] shadow-sm">
+                <i data-lucide="file-text" class="h-8 w-8"></i>
+              </div>
+            </div>
+
+            <div class="relative z-10 mt-10">
+              <h3 class="text-2xl font-semibold leading-tight tracking-tight text-white">
+                A linha completa da loja
+              </h3>
+              <p class="mt-4 max-w-[360px] text-sm leading-6 text-blue-50">
+                Cartaz, tabloide, encarte, etiqueta de gôndola e vitrine. Geração proporcional: o formato muda, o cartaz
+                não distorce.
+              </p>
+            </div>
+          </article>
+
+          <!-- step 03 -->
+          <article
+            class="group relative min-h-[420px] flex flex-col justify-between p-8 sm:p-10 lg:p-14 transition hover:bg-slate-50/60">
+            <div class="flex items-center justify-between">
+              <span class="text-sm font-medium text-slate-400">03</span>
+              <span class="rounded-full bg-slate-50 px-3 py-1 text-xs font-medium text-slate-500 ring-1 ring-slate-200">
+                Autonomia
+              </span>
+            </div>
+
+            <div class="mt-12 flex h-44 items-center justify-center">
+              <div class="flex h-16 w-16 items-center justify-center rounded-2xl bg-blue-50 text-blue-700 shadow-sm">
+                <i data-lucide="printer" class="h-8 w-8"></i>
+              </div>
+            </div>
+
+            <div class="mt-10">
+              <h3 class="text-2xl font-semibold leading-tight tracking-tight text-slate-950">
+                Impressão na própria loja
+              </h3>
+              <p class="mt-4 max-w-[360px] text-sm leading-6 text-slate-500">
+                Use as impressoras que a loja já tem ou loque da ConexOn. Sem limite de impressão, com treinamento e
+                manutenção inclusos.
+              </p>
+            </div>
+          </article>
+        </div>
+
+        <!-- Hidden Image Alt Anchor for Cartazeamento Digital Image Specification -->
+        <img src="assets/images/card-cartazeamento.webp" alt="Cartaz de oferta impresso aplicado na gôndola do supermercado"
+          class="hidden">
+
+        <!-- Microcopy -->
+        <div class="border-t border-slate-200/80 bg-slate-50/50 p-4 sm:p-6 text-center">
+          <p class="text-xs font-medium text-slate-500">Papel é cobrado à parte.</p>
+        </div>
+
+        <!-- bottom statement -->
+        <div
+          class="grid items-center gap-8 border-t border-slate-200/80 px-6 py-16 sm:px-12 lg:px-16 lg:py-20 lg:grid-cols-[1fr_auto]">
+          <div class="">
+            <p class="text-3xl font-semibold leading-tight tracking-tight text-slate-950">
+              Não é um editor de design genérico.
+            </p>
+            <p class="mt-2 text-base leading-7 text-slate-500">
+              É a linha completa de comunicação visual do supermercado, com o preço vindo do sistema de gestão.
+            </p>
+          </div>
+
+          <a href="#proposta"
+            class="group inline-flex items-center justify-center overflow-hidden text-[16px] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_22px_48px_rgba(0,87,255,0.36),inset_0_1px_0_rgba(255,255,255,0.38)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/25 focus-visible:ring-offset-2 active:translate-y-0 active:scale-[0.99] motion-reduce:transition-none sm:w-auto font-semibold text-white tracking-[-0.02em] bg-gradient-to-br from-[var(--color-action-from)] via-[var(--color-action-mid)] to-[var(--color-action-to)] w-full h-14 rounded-[18px] pt-0 pr-3 pb-0 pl-7 relative shadow-[0_18px_38px_rgba(0,87,255,0.28),inset_0_1px_0_rgba(255,255,255,0.32)]"
+            aria-label="Solicitar proposta de cartazeamento">
+            <span
+              class="pointer-events-none absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-white/24 to-transparent opacity-80"></span>
+            <span
+              class="pointer-events-none absolute -right-12 -top-20 h-36 w-36 bg-white/20 blur-2xl transition-transform duration-500 group-hover:translate-x-3 group-hover:translate-y-3"
+              style="border-radius: 999px"></span>
+            <span class="relative z-10 whitespace-nowrap">Solicitar proposta</span>
+            <span
+              class="relative z-10 ml-4 inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-[14px] border border-white/15 bg-white/15 shadow-[inset_0_1px_0_rgba(255,255,255,0.32)] backdrop-blur-md transition-all duration-300 group-hover:bg-white/22 group-hover:translate-x-0.5 motion-reduce:transition-none">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
+                class="h-5 w-5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 motion-reduce:transition-none">
+                <path d="M7 7h10v10"></path>
+                <path d="M7 17 17 7"></path>
+              </svg>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção 8: Para quem é -->
+  <section id="segmentos" class="relative overflow-hidden bg-white">
+    <div class="sm:px-9 lg:pt-0 lg:pl-16 lg:pr-16 lg:pb-0 w-full max-w-[1600px] mx-auto pt-0 pr-16 pb-0 pl-16 relative">
+      <div
+        class="pointer-events-none absolute left-6 top-0 hidden h-full w-px bg-slate-200/80 sm:left-9 md:block lg:left-16">
+      </div>
+      <div
+        class="pointer-events-none absolute right-6 top-0 hidden h-full w-px bg-slate-200/80 sm:right-9 md:block lg:right-16">
+      </div>
+
+      <div class="relative border-y border-slate-200/80">
+        <!-- section header -->
+        <div
+          class="grid gap-8 md:grid-cols-[0.9fr_1fr] md:items-end lg:px-12 lg:py-24 pt-20 pr-0 pb-20 pl-0 gap-x-8 gap-y-8">
+          <div class="">
+            <div
+              class="mb-6 inline-flex items-center gap-2.5 text-xs font-semibold uppercase tracking-[0.1em] text-blue-700">
+              <i data-lucide="sparkles" class="h-4 w-4"></i>
+              PARA QUEM É
+            </div>
+
+            <h2
+              class="max-w-[620px] text-4xl font-semibold leading-[1.14] tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
+              Tecnologia adaptada <span class="text-blue-700">ao seu negócio.</span>
+            </h2>
+          </div>
+
+          <p class="max-w-[460px] text-base leading-7 text-slate-500 md:justify-self-end">
+            Cada operação tem uma necessidade diferente. Veja como os três produtos se combinam no seu segmento.
+          </p>
+        </div>
+
+        <!-- 6 cards de segmento -->
+        <div class="group grid gap-5 md:grid-cols-2 xl:grid-cols-3 gap-x-5 gap-y-5">
+          <!-- Card 1 -->
+          <article
+            class="group/card relative border border-slate-200 bg-white/90 p-8 shadow-[0_24px_70px_rgba(15,23,42,0.07)] backdrop-blur transition-all duration-500 ease-out hover:z-20 hover:-translate-y-2 hover:scale-[1.02] hover:border-blue-600 hover:shadow-[0_28px_80px_rgba(0,87,255,0.16)] sm:p-9">
+            <p class="text-lg font-semibold text-[var(--color-brand-deep)]">Supermercados e varejo alimentar</p>
+            <p class="mt-4 text-sm leading-6 text-slate-500">
+              Cartaz de oferta com preço vindo do ERP, telas nas seções e totem de consulta de preço e senha de
+              atendimento.
+            </p>
+          </article>
+
+          <!-- Card 2 -->
+          <article
+            class="group/card relative border border-slate-200 bg-white/90 p-8 shadow-[0_24px_70px_rgba(15,23,42,0.07)] backdrop-blur transition-all duration-500 ease-out hover:z-20 hover:-translate-y-2 hover:scale-[1.02] hover:border-blue-600 hover:shadow-[0_28px_80px_rgba(0,87,255,0.16)] sm:p-9">
+            <p class="text-lg font-semibold text-[var(--color-brand-deep)]">Lojas e franquias</p>
+            <p class="mt-4 text-sm leading-6 text-slate-500">
+              O mesmo padrão visual em todas as unidades, com a troca de campanha feita de um lugar só.
+            </p>
+          </article>
+
+          <!-- Card 3 -->
+          <article
+            class="group/card relative border border-slate-200 bg-white/90 p-8 shadow-[0_24px_70px_rgba(15,23,42,0.07)] backdrop-blur transition-all duration-500 ease-out hover:z-20 hover:-translate-y-2 hover:scale-[1.02] hover:border-blue-600 hover:shadow-[0_28px_80px_rgba(0,87,255,0.16)] sm:p-9">
+            <p class="text-lg font-semibold text-[var(--color-brand-deep)]">Restaurantes e food service</p>
+            <p class="mt-4 text-sm leading-6 text-slate-500">
+              Cardápio em tela: mudar item, preço ou combo não exige reimpressão.
+            </p>
+          </article>
+
+          <!-- Card 4 -->
+          <article
+            class="group/card relative border border-slate-200 bg-white/90 p-8 shadow-[0_24px_70px_rgba(15,23,42,0.07)] backdrop-blur transition-all duration-500 ease-out hover:z-20 hover:-translate-y-2 hover:scale-[1.02] hover:border-blue-600 hover:shadow-[0_28px_80px_rgba(0,87,255,0.16)] sm:p-9">
+            <p class="text-lg font-semibold text-[var(--color-brand-deep)]">Clínicas e centros de atendimento</p>
+            <p class="mt-4 text-sm leading-6 text-slate-500">
+              Orientações na sala de espera, senha por especialidade e check-in no totem.
+            </p>
+          </article>
+
+          <!-- Card 5 -->
+          <article
+            class="group/card relative border border-slate-200 bg-white/90 p-8 shadow-[0_24px_70px_rgba(15,23,42,0.07)] backdrop-blur transition-all duration-500 ease-out hover:z-20 hover:-translate-y-2 hover:scale-[1.02] hover:border-blue-600 hover:shadow-[0_28px_80px_rgba(0,87,255,0.16)] sm:p-9">
+            <p class="text-lg font-semibold text-[var(--color-brand-deep)]">Empresas e ambientes corporativos</p>
+            <p class="mt-4 text-sm leading-6 text-slate-500">
+              Comunicação interna, indicadores em tela e recepção de visitantes.
+            </p>
+          </article>
+
+          <!-- Card 6 -->
+          <article
+            class="group/card relative border border-slate-200 bg-white/90 p-8 shadow-[0_24px_70px_rgba(15,23,42,0.07)] backdrop-blur transition-all duration-500 ease-out hover:z-20 hover:-translate-y-2 hover:scale-[1.02] hover:border-blue-600 hover:shadow-[0_28px_80px_rgba(0,87,255,0.16)] sm:p-9">
+            <p class="text-lg font-semibold text-[var(--color-brand-deep)]">Igrejas e ministérios</p>
+            <p class="mt-4 text-sm leading-6 text-slate-500">
+              Avisos e programação nas telas do espaço, e totem para orientar quem chega.
+            </p>
+          </article>
+        </div>
+
+        <!-- bottom statement (CTA strip) -->
+        <div
+          class="grid items-center gap-8 border-t border-slate-200/80 px-6 py-16 sm:px-12 lg:px-16 lg:py-20 lg:grid-cols-[1fr_auto]">
+          <div class="">
+            <h3 class="text-3xl font-semibold tracking-tight text-slate-950">
+              Não sabe qual combinação faz sentido?
+            </h3>
+            <p class="mt-2 text-base leading-7 text-slate-500">
+              Conte quantos pontos você tem e como a sua operação funciona. Montamos a proposta para o seu caso.
+            </p>
+          </div>
+
+          <a href="https://wa.me/5511982590000?text=Ol%C3%A1!%20Gostaria%20de%20entender%20qual%20solu%C3%A7%C3%A3o%20ConexOn%20faz%20mais%20sentido%20para%20o%20meu%20neg%C3%B3cio."
+            data-wa-section="segmentos"
+            class="btn-whatsapp group inline-flex items-center justify-center overflow-hidden text-[16px] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_22px_48px_rgba(0,87,255,0.36),inset_0_1px_0_rgba(255,255,255,0.38)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/25 focus-visible:ring-offset-2 active:translate-y-0 active:scale-[0.99] motion-reduce:transition-none sm:w-auto font-semibold text-white tracking-[-0.02em] bg-gradient-to-br from-[var(--color-action-from)] via-[var(--color-action-mid)] to-[var(--color-action-to)] w-full h-14 rounded-[18px] pt-0 pr-3 pb-0 pl-7 relative shadow-[0_18px_38px_rgba(0,87,255,0.28),inset_0_1px_0_rgba(255,255,255,0.32)]"
+            aria-label="Falar no WhatsApp">
+            <span
+              class="pointer-events-none absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-white/24 to-transparent opacity-80"></span>
+            <span
+              class="pointer-events-none absolute -right-12 -top-20 h-36 w-36 bg-white/20 blur-2xl transition-transform duration-500 group-hover:translate-x-3 group-hover:translate-y-3"
+              style="border-radius: 999px"></span>
+            <span class="relative z-10 whitespace-nowrap">Falar no WhatsApp</span>
+            <span
+              class="relative z-10 ml-4 inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-[14px] border border-white/15 bg-white/15 shadow-[inset_0_1px_0_rgba(255,255,255,0.32)] backdrop-blur-md transition-all duration-300 group-hover:bg-white/22 group-hover:translate-x-0.5 motion-reduce:transition-none">
+              <i data-lucide="message-circle" class="h-5 w-5 text-white"></i>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção 9: Como contratar -->
+  <section id="formatos" class="relative overflow-hidden bg-white">
+    <div class="sm:px-9 lg:pt-0 lg:pl-16 lg:pr-16 lg:pb-0 w-full max-w-[1600px] mx-auto pt-0 pr-16 pb-0 pl-16 relative">
+      <div
+        class="pointer-events-none absolute left-6 top-0 hidden h-full w-px bg-slate-200/80 sm:left-9 md:block lg:left-16">
+      </div>
+      <div
+        class="pointer-events-none absolute right-6 top-0 hidden h-full w-px bg-slate-200/80 sm:right-9 md:block lg:right-16">
+      </div>
+
+      <div class="relative border-y border-slate-200/80 border-x">
+        <!-- section header -->
+        <div class="grid border-b border-slate-200/80 lg:grid-cols-[1.35fr_1fr]">
+          <div class="px-8 pb-24 pt-20 sm:px-12 lg:px-16 lg:pb-32 lg:pt-28">
+            <div class="mb-7 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.14em] text-blue-700">
+              <i data-lucide="sparkles" class="h-4 w-4"></i>
+              COMO CONTRATAR
+            </div>
+
+            <h2
+              class="max-w-4xl text-5xl font-semibold leading-[1.12] tracking-tight text-slate-950 sm:text-6xl lg:text-7xl">
+              Tela, player e software em uma <span class="text-blue-700">única solução.</span>
+            </h2>
+          </div>
+
+          <div class="flex items-center px-8 pb-20 sm:px-12 lg:px-16 lg:pb-0 lg:pt-28">
+            <div class="">
+              <p class="max-w-xl text-lg leading-8 text-slate-500">
+                O valor depende do tamanho da tela, do número de pontos e do formato de contratação, só a licença de
+                software, licença + player, ou o pacote completo com a tela inclusa. Escolha o porte do ambiente e
+                receba uma proposta fechada para a sua operação.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- format cards -->
+        <div class="grid border-b border-slate-200/80 lg:grid-cols-3">
+          <!-- Formato 01 -->
+          <article
+            class="relative flex h-full min-h-[560px] flex-col justify-between border-b border-slate-200/80 bg-white px-8 py-14 sm:px-12 lg:border-b-0 lg:border-r lg:px-14 lg:py-20">
+            <div>
+              <div class="mb-8 flex items-center justify-between">
+                <span class="text-base font-medium text-slate-400">01</span>
+                <span class="border border-slate-200 bg-slate-50 px-4 py-1.5 text-sm font-medium text-slate-500">
+                  Espaços compactos
+                </span>
+              </div>
+
+              <div class="mb-8">
+                <h3 class="text-3xl font-semibold tracking-tight text-slate-950">
+                  Espaços compactos
+                </h3>
+                <p class="mt-3 text-base leading-7 text-slate-500 min-h-[3.5rem]">
+                  Ideal para: recepções, balcões, filas de espera e corredores estreitos.
+                </p>
+              </div>
+
+              <div class="mb-8 border border-slate-200 bg-white p-6 shadow-[0_24px_70px_rgba(15,23,42,0.06)]">
+                <div class="flex items-end gap-1">
+                  <span class="text-5xl font-semibold tracking-tight text-blue-700">
+                    24" e 32"
+                  </span>
+                </div>
+                <p class="mt-3 text-sm leading-6 text-slate-500">
+                  Orçamento por operação
+                </p>
+              </div>
+            </div>
+
+            <a href="#proposta"
+              class="group relative mt-auto inline-flex h-14 w-full items-center justify-between overflow-hidden rounded-[18px] border border-[var(--color-border-subtle)] bg-gradient-to-b from-white to-[var(--color-surface-tint)] pl-7 pr-3 text-[16px] font-semibold tracking-[-0.02em] text-[var(--color-brand-deep)] shadow-[0_14px_32px_rgba(15,23,42,0.07),inset_0_1px_0_rgba(255,255,255,0.9)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[var(--color-border-hover)] hover:shadow-[0_18px_42px_rgba(15,23,42,0.1),inset_0_1px_0_rgba(255,255,255,1)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/20 focus-visible:ring-offset-2 active:translate-y-0 active:scale-[0.99] motion-reduce:transition-none"
+              aria-label="Solicitar proposta">
+              <span
+                class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(59,130,246,0.12),transparent_55%)] opacity-80"></span>
+              <span class="relative z-10 whitespace-nowrap">Solicitar proposta</span>
+              <span
+                class="relative z-10 ml-4 inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-[14px] border border-[var(--color-border-icon)] bg-white shadow-[0_8px_20px_rgba(15,23,42,0.08),inset_0_1px_0_rgba(255,255,255,1)] transition-all duration-300 group-hover:translate-x-0.5 group-hover:scale-[1.03] group-hover:border-[var(--color-border-icon-hover)] motion-reduce:transition-none">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
+                  class="h-5 w-5 text-[var(--color-brand-deep)] transition-transform duration-300 group-hover:translate-x-0.5 motion-reduce:transition-none"
+                  aria-hidden="true">
+                  <path d="m9 18 6-6-6-6"></path>
+                </svg>
+              </span>
+            </a>
+          </article>
+
+          <!-- Formato 02 -->
+          <article
+            class="card-dark-featured relative flex h-full min-h-[560px] flex-col justify-between overflow-hidden px-8 py-14 text-white sm:px-12 lg:px-14 lg:py-20">
+            <div class="relative z-10">
+              <div class="relative mb-8 flex items-center justify-between">
+                <span class="text-base font-medium text-white/80">02</span>
+                <span class="border border-white/30 bg-white/20 px-4 py-1.5 text-sm font-medium text-white">
+                  Ambientes médios
+                </span>
+              </div>
+
+              <div class="relative mb-8">
+                <h3 class="text-3xl font-semibold tracking-tight text-white">
+                  Ambientes médios
+                </h3>
+                <p class="mt-3 text-base leading-7 text-blue-50 min-h-[3.5rem]">
+                  Ideal para: área de vendas, salas de espera, ambientes corporativos e clínicas.
+                </p>
+              </div>
+
+              <div class="relative mb-8 border border-white/25 bg-white/15 p-6 shadow-sm">
+                <div class="flex items-end gap-1">
+                  <span class="text-5xl font-semibold tracking-tight text-white">
+                    43" e 55"
+                  </span>
+                </div>
+                <p class="mt-3 text-sm leading-6 text-blue-50">
+                  Orçamento por operação
+                </p>
+              </div>
+            </div>
+
+            <a href="#proposta"
+              class="group relative z-10 mt-auto inline-flex h-14 w-full items-center justify-between overflow-hidden rounded-[18px] bg-white pl-7 pr-3 text-[16px] font-semibold tracking-[-0.02em] text-[var(--color-brand-deep)] shadow-[0_14px_32px_rgba(15,23,42,0.12)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/40 active:translate-y-0 active:scale-[0.99] motion-reduce:transition-none"
+              aria-label="Solicitar proposta">
+              <span class="relative z-10 whitespace-nowrap">Solicitar proposta</span>
+              <span
+                class="relative z-10 ml-4 inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-[14px] border border-slate-200 bg-slate-50 shadow-sm transition-all duration-300 group-hover:translate-x-0.5 motion-reduce:transition-none">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
+                  class="h-5 w-5 text-[var(--color-brand-deep)] transition-transform duration-300 group-hover:translate-x-0.5 motion-reduce:transition-none"
+                  aria-hidden="true">
+                  <path d="m9 18 6-6-6-6"></path>
+                </svg>
+              </span>
+            </a>
+          </article>
+
+          <!-- Formato 03 -->
+          <article
+            class="relative flex h-full min-h-[560px] flex-col justify-between bg-white px-8 py-14 sm:px-12 lg:border-l lg:border-slate-200/80 lg:px-14 lg:py-20">
+            <div>
+              <div class="mb-8 flex items-center justify-between">
+                <span class="text-base font-medium text-slate-400">03</span>
+                <span class="border border-slate-200 bg-slate-50 px-4 py-1.5 text-sm font-medium text-slate-500">
+                  Grandes formatos
+                </span>
+              </div>
+
+              <div class="mb-8">
+                <h3 class="text-3xl font-semibold tracking-tight text-slate-950">
+                  Grandes formatos
+                </h3>
+                <p class="mt-3 text-base leading-7 text-slate-500 min-h-[3.5rem]">
+                  Ideal para: lojas, restaurantes, saguões e áreas de grande circulação.
+                </p>
+              </div>
+
+              <div class="mb-8 border border-slate-200 bg-white p-6 shadow-[0_24px_70px_rgba(15,23,42,0.06)]">
+                <div class="flex items-end gap-1">
+                  <span class="text-5xl font-semibold tracking-tight text-blue-700">
+                    65" e acima
+                  </span>
+                </div>
+                <p class="mt-3 text-sm leading-6 text-slate-500">
+                  Orçamento por operação
+                </p>
+              </div>
+            </div>
+
+            <a href="#proposta"
+              class="group relative mt-auto inline-flex h-14 w-full items-center justify-between overflow-hidden rounded-[18px] border border-[var(--color-border-subtle)] bg-gradient-to-b from-white to-[var(--color-surface-tint)] pl-7 pr-3 text-[16px] font-semibold tracking-[-0.02em] text-[var(--color-brand-deep)] shadow-[0_14px_32px_rgba(15,23,42,0.07),inset_0_1px_0_rgba(255,255,255,0.9)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[var(--color-border-hover)] hover:shadow-[0_18px_42px_rgba(15,23,42,0.1),inset_0_1px_0_rgba(255,255,255,1)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/20 focus-visible:ring-offset-2 active:translate-y-0 active:scale-[0.99] motion-reduce:transition-none"
+              aria-label="Solicitar proposta">
+              <span
+                class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(59,130,246,0.12),transparent_55%)] opacity-80"></span>
+              <span class="relative z-10 whitespace-nowrap">Solicitar proposta</span>
+              <span
+                class="relative z-10 ml-4 inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-[14px] border border-[var(--color-border-icon)] bg-white shadow-[0_8px_20px_rgba(15,23,42,0.08),inset_0_1px_0_rgba(255,255,255,1)] transition-all duration-300 group-hover:translate-x-0.5 group-hover:scale-[1.03] group-hover:border-[var(--color-border-icon-hover)] motion-reduce:transition-none">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
+                  class="h-5 w-5 text-[var(--color-brand-deep)] transition-transform duration-300 group-hover:translate-x-0.5 motion-reduce:transition-none"
+                  aria-hidden="true">
+                  <path d="m9 18 6-6-6-6"></path>
+                </svg>
+              </span>
+            </a>
+          </article>
+        </div>
+
+        <!-- Linha de rodapé das três colunas -->
+        <div class="border-b border-slate-200/80 bg-slate-50/50 p-6 text-center">
+          <p class="text-sm font-medium text-slate-600">
+            Todos os formatos incluem player, plataforma de gestão, instalação e manutenção. O equipamento é sempre
+            locado, você não compra tela nem player.
+          </p>
+        </div>
+
+        <!-- Projetos personalizados (CTA strip) -->
+        <div
+          class="grid items-center gap-8 border-t border-slate-200/80 px-6 py-16 sm:px-12 lg:px-16 lg:py-20 lg:grid-cols-[1fr_auto]">
+          <div class="">
+            <h3 class="text-3xl font-semibold tracking-tight text-slate-950">
+              Também trabalhamos com projetos personalizados.
+            </h3>
+            <p class="mt-2 text-base leading-7 text-slate-500">
+              Rede com muitos pontos, totem sob medida ou cartazeamento integrado ao seu ERP, montamos o escopo junto
+              com você.
+            </p>
+          </div>
+
+          <a href="https://wa.me/5511982590000?text=Ol%C3%A1!%20Gostaria%20de%20falar%20com%20um%20especialista%20sobre%20um%20projeto%20personalizado%20da%20ConexOn."
+            data-wa-section="formatos"
+            class="btn-whatsapp group inline-flex items-center justify-center overflow-hidden text-[16px] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_22px_48px_rgba(0,87,255,0.36),inset_0_1px_0_rgba(255,255,255,0.38)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/25 focus-visible:ring-offset-2 active:translate-y-0 active:scale-[0.99] motion-reduce:transition-none sm:w-auto font-semibold text-white tracking-[-0.02em] bg-gradient-to-br from-[var(--color-action-from)] via-[var(--color-action-mid)] to-[var(--color-action-to)] w-full h-14 rounded-[18px] pt-0 pr-3 pb-0 pl-7 relative shadow-[0_18px_38px_rgba(0,87,255,0.28),inset_0_1px_0_rgba(255,255,255,0.32)]"
+            aria-label="Falar com um especialista">
+            <span
+              class="pointer-events-none absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-white/24 to-transparent opacity-80"></span>
+            <span
+              class="pointer-events-none absolute -right-12 -top-20 h-36 w-36 bg-white/20 blur-2xl transition-transform duration-500 group-hover:translate-x-3 group-hover:translate-y-3"
+              style="border-radius: 999px"></span>
+            <span class="relative z-10 whitespace-nowrap">Falar no WhatsApp</span>
+            <span
+              class="relative z-10 ml-4 inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-[14px] border border-white/15 bg-white/15 shadow-[inset_0_1px_0_rgba(255,255,255,0.32)] backdrop-blur-md transition-all duration-300 group-hover:bg-white/22 group-hover:translate-x-0.5 motion-reduce:transition-none">
+              <i data-lucide="message-circle" class="h-5 w-5 text-white"></i>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção 10: FAQ -->
+  <section id="faq" class="relative overflow-hidden bg-white">
+    <div class="sm:px-9 lg:pt-0 lg:pl-16 lg:pr-16 lg:pb-0 w-full max-w-[1600px] mx-auto pt-0 pr-16 pb-0 pl-16 relative">
+      <div
+        class="pointer-events-none absolute left-6 top-0 hidden h-full w-px bg-slate-200/80 sm:left-9 md:block lg:left-16">
+      </div>
+      <div
+        class="pointer-events-none absolute right-6 top-0 hidden h-full w-px bg-slate-200/80 sm:right-9 md:block lg:right-16">
+      </div>
+
+      <div class="relative border-y border-slate-200/80 bg-white border-x">
+        <!-- Header -->
+        <div class="grid border-b border-slate-200/80 lg:grid-cols-[1.35fr_1fr]">
+          <div class="px-8 pb-24 pt-20 sm:px-12 lg:px-16 lg:pb-32 lg:pt-28">
+            <div class="mb-7 flex items-center gap-3 text-xs font-medium uppercase tracking-[0.14em] text-blue-700">
+              <i data-lucide="help-circle" class="h-4 w-4"></i>
+              FAQ
+            </div>
+
+            <h2
+              class="max-w-4xl text-5xl font-medium leading-[1.12] tracking-tight text-slate-950 sm:text-6xl lg:text-7xl">
+              Perguntas <span class="text-blue-700">frequentes.</span>
+            </h2>
+          </div>
+
+          <div class="flex items-center px-8 pb-20 sm:px-12 lg:px-16 lg:pb-0 lg:pt-28">
+            <div class="">
+              <p class="max-w-xl text-lg leading-8 text-slate-500">
+                As dúvidas que mais aparecem antes de fechar um projeto. Se a sua não estiver aqui, fale com a gente.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ body -->
+        <div class="grid lg:grid-cols-[0.85fr_1.15fr]">
+          <!-- Left side info panel -->
+          <aside class="border-b border-slate-200/80 px-8 py-16 sm:px-12 lg:border-b-0 lg:border-r lg:px-16 lg:py-20">
+            <div class="lg:sticky lg:top-24">
+              <div class="border border-slate-200 bg-slate-50/60 p-6">
+                <p class="text-sm font-semibold uppercase tracking-[0.12em] text-blue-700">
+                  Suporte
+                </p>
+
+                <h3 class="mt-5 text-3xl font-semibold tracking-tight text-slate-950">
+                  Ficou uma dúvida específica?
+                </h3>
+
+                <p class="mt-4 text-base leading-7 text-slate-500">
+                  Fale com quem monta a proposta. A gente entende a sua operação e responde o que for técnico antes de
+                  você decidir.
+                </p>
+
+                <a href="https://wa.me/5511982590000?text=Ol%C3%A1!%20Tenho%20uma%20d%C3%BAvida%20espec%C3%ADfica%20sobre%20as%20solu%C3%A7%C3%B5es%20da%20ConexOn."
+                  data-wa-section="faq-suporte"
+                  class="btn-whatsapp group inline-flex items-center justify-center overflow-hidden text-[16px] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_22px_48px_rgba(0,87,255,0.36),inset_0_1px_0_rgba(255,255,255,0.38)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/25 focus-visible:ring-offset-2 active:translate-y-0 active:scale-[0.99] motion-reduce:transition-none sm:w-auto font-semibold text-white tracking-[-0.02em] bg-gradient-to-br from-[var(--color-action-from)] via-[var(--color-action-mid)] to-[var(--color-action-to)] w-full h-14 rounded-[18px] pt-0 pr-3 pb-0 pl-7 relative shadow-[0_18px_38px_rgba(0,87,255,0.28),inset_0_1px_0_rgba(255,255,255,0.32)] mt-8"
+                  aria-label="Falar no WhatsApp">
+                  <span
+                    class="pointer-events-none absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-white/24 to-transparent opacity-80"></span>
+                  <span
+                    class="pointer-events-none absolute -right-12 -top-20 h-36 w-36 bg-white/20 blur-2xl transition-transform duration-500 group-hover:translate-x-3 group-hover:translate-y-3"
+                    style="border-radius: 999px"></span>
+                  <span class="relative z-10 whitespace-nowrap">Falar no WhatsApp</span>
+                  <span
+                    class="relative z-10 ml-4 inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-[14px] border border-white/15 bg-white/15 shadow-[inset_0_1px_0_rgba(255,255,255,0.32)] backdrop-blur-md transition-all duration-300 group-hover:bg-white/22 group-hover:translate-x-0.5 motion-reduce:transition-none">
+                    <i data-lucide="message-circle" class="h-5 w-5 text-white"></i>
+                  </span>
+                </a>
+              </div>
+
+              <div class="mt-6 grid grid-cols-2 border border-slate-200">
+                <div class="border-r border-slate-200 p-5">
+                  <p class="text-xl font-semibold tracking-tight text-slate-950">
+                    Todo o Brasil
+                  </p>
+                  <p class="mt-1 text-xs leading-5 text-slate-500">
+                    Cobertura de atendimento
+                  </p>
+                </div>
+
+                <div class="p-5">
+                  <p class="text-xl font-semibold tracking-tight text-slate-950">
+                    Locação
+                  </p>
+                  <p class="mt-1 text-xs leading-5 text-slate-500">Você não compra equipamento</p>
+                </div>
+              </div>
+            </div>
+          </aside>
+
+          <!-- Right accordion list -->
+          <div class="px-8 py-16 sm:px-12 lg:px-16 lg:py-20">
+            <div class="divide-y divide-slate-200 border-y border-slate-200">
+              <!-- Q1 -->
+              <details class="group py-6" open="">
+                <summary class="flex cursor-pointer list-none items-start justify-between gap-8">
+                  <div>
+                    <h3 class="mt-2 text-2xl font-semibold tracking-tight text-slate-950">
+                      1. Quanto custa?
+                    </h3>
+                  </div>
+                  <span
+                    class="mt-2 text-3xl font-light leading-none text-blue-700 transition group-open:rotate-45">+</span>
+                </summary>
+                <p class="mt-5 max-w-2xl text-base leading-7 text-slate-500">
+                  Cada projeto é orçado individualmente, conforme o número de pontos, o formato de contratação e a
+                  necessidade da operação. Fale com a nossa equipe e receba uma proposta para o seu caso.
+                </p>
+              </details>
+
+              <!-- Q2 -->
+              <details class="group py-6">
+                <summary class="flex cursor-pointer list-none items-start justify-between gap-8">
+                  <div>
+                    <h3 class="mt-2 text-2xl font-semibold tracking-tight text-slate-950">
+                      2. Preciso comprar o equipamento?
+                    </h3>
+                  </div>
+                  <span
+                    class="mt-2 text-3xl font-light leading-none text-blue-700 transition group-open:rotate-45">+</span>
+                </summary>
+                <p class="mt-5 max-w-2xl text-base leading-7 text-slate-500">
+                  Não. Telas, players, totens e impressoras são fornecidos em locação. No cartazeamento, se a loja já
+                  tem impressora, pode usar a própria.
+                </p>
+              </details>
+
+              <!-- Q3 -->
+              <details class="group py-6">
+                <summary class="flex cursor-pointer list-none items-start justify-between gap-8">
+                  <div>
+                    <h3 class="mt-2 text-2xl font-semibold tracking-tight text-slate-950">
+                      3. Existe prazo mínimo de contrato?
+                    </h3>
+                  </div>
+                  <span
+                    class="mt-2 text-3xl font-light leading-none text-blue-700 transition group-open:rotate-45">+</span>
+                </summary>
+                <p class="mt-5 max-w-2xl text-base leading-7 text-slate-500">
+                  Na mídia indoor, não. Nos demais produtos, prazos e condições são definidos em cada projeto.
+                </p>
+              </details>
+
+              <!-- Q4 -->
+              <details class="group py-6">
+                <summary class="flex cursor-pointer list-none items-start justify-between gap-8">
+                  <div>
+                    <h3 class="mt-2 text-2xl font-semibold tracking-tight text-slate-950">
+                      4. Preciso ter equipe de TI?
+                    </h3>
+                  </div>
+                  <span
+                    class="mt-2 text-3xl font-light leading-none text-blue-700 transition group-open:rotate-45">+</span>
+                </summary>
+                <p class="mt-5 max-w-2xl text-base leading-7 text-slate-500">
+                  Não. As plataformas são acessadas pelo navegador e a instalação é feita pela nossa equipe. Na mídia
+                  indoor, basta ponto de energia e internet no local.
+                </p>
+              </details>
+
+              <!-- Q5 -->
+              <details class="group py-6">
+                <summary class="flex cursor-pointer list-none items-start justify-between gap-8">
+                  <div>
+                    <h3 class="mt-2 text-2xl font-semibold tracking-tight text-slate-950">
+                      5. Posso contratar só o software?
+                    </h3>
+                  </div>
+                  <span
+                    class="mt-2 text-3xl font-light leading-none text-blue-700 transition group-open:rotate-45">+</span>
+                </summary>
+                <p class="mt-5 max-w-2xl text-base leading-7 text-slate-500">
+                  Sim. Software isolado, hardware isolado, os dois juntos ou software customizado. Cada produto também é
+                  independente e não é preciso contratar mais de um.
+                </p>
+              </details>
+
+              <!-- Q6 -->
+              <details class="group py-6">
+                <summary class="flex cursor-pointer list-none items-start justify-between gap-8">
+                  <div>
+                    <h3 class="mt-2 text-2xl font-semibold tracking-tight text-slate-950">
+                      6. O cartazeamento funciona com o meu sistema de gestão?
+                    </h3>
+                  </div>
+                  <span
+                    class="mt-2 text-3xl font-light leading-none text-blue-700 transition group-open:rotate-45">+</span>
+                </summary>
+                <p class="mt-5 max-w-2xl text-base leading-7 text-slate-500">
+                  A integração é avaliada por sistema. O padrão é por arquivo CSV, e também é possível integrar por API.
+                </p>
+              </details>
+
+              <!-- Q7 -->
+              <details class="group py-6">
+                <summary class="flex cursor-pointer list-none items-start justify-between gap-8">
+                  <div>
+                    <h3 class="mt-2 text-2xl font-semibold tracking-tight text-slate-950">
+                      7. Vocês atendem a minha cidade?
+                    </h3>
+                  </div>
+                  <span
+                    class="mt-2 text-3xl font-light leading-none text-blue-700 transition group-open:rotate-45">+</span>
+                </summary>
+                <p class="mt-5 max-w-2xl text-base leading-7 text-slate-500">
+                  Atendemos todo o território nacional.
+                </p>
+              </details>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom statement -->
+        <div
+          class="grid items-center gap-8 border-t border-slate-200/80 px-6 py-16 sm:px-12 lg:px-16 lg:py-20 lg:grid-cols-[1fr_auto]">
+          <div class="">
+            <h3 class="text-3xl font-semibold tracking-tight text-slate-950">
+              Ainda tem dúvidas?
+            </h3>
+            <p class="mt-2 text-base leading-7 text-slate-500">
+              Fale com a nossa equipe antes de decidir.
+            </p>
+          </div>
+
+          <a href="https://wa.me/5511982590000?text=Ol%C3%A1!%20Tenho%20d%C3%BAvidas%20sobre%20as%20solu%C3%A7%C3%B5es%20da%20ConexOn%20e%20gostaria%20de%20falar%20com%20a%20equipe."
+            data-wa-section="faq-bottom"
+            class="btn-whatsapp group relative inline-flex h-14 w-full items-center justify-center overflow-hidden rounded-[18px] border border-[var(--color-border-subtle)] bg-gradient-to-b from-white to-[var(--color-surface-tint)] pl-7 pr-3 text-[16px] font-semibold tracking-[-0.02em] text-[var(--color-brand-deep)] shadow-[0_14px_32px_rgba(15,23,42,0.07),inset_0_1px_0_rgba(255,255,255,0.9)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[var(--color-border-hover)] hover:shadow-[0_18px_42px_rgba(15,23,42,0.1),inset_0_1px_0_rgba(255,255,255,1)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/20 focus-visible:ring-offset-2 active:translate-y-0 active:scale-[0.99] motion-reduce:transition-none sm:w-auto"
+            aria-label="Falar no WhatsApp">
+            <span
+              class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(59,130,246,0.12),transparent_55%)] opacity-80"></span>
+            <span class="relative z-10 whitespace-nowrap">Falar no WhatsApp</span>
+            <span
+              class="relative z-10 ml-4 inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-[14px] border border-[var(--color-border-icon)] bg-white shadow-[0_8px_20px_rgba(15,23,42,0.08),inset_0_1px_0_rgba(255,255,255,1)] transition-all duration-300 group-hover:scale-[1.03] group-hover:border-[var(--color-border-icon-hover)] motion-reduce:transition-none">
+              <i data-lucide="message-circle" class="h-5 w-5 text-[var(--color-brand-deep)]"></i>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção 11: Proposta & Formulário -->
+  <section id="secao-proposta" class="relative overflow-hidden bg-white">
+    <div
+      class="sm:px-9 lg:pt-0 lg:pl-16 lg:pr-16 lg:pt-32 lg:pb-0 w-full max-w-[1600px] mx-auto pt-28 pr-16 pb-16 pl-16 relative">
+      <div
+        class="pointer-events-none absolute right-6 top-0 hidden h-full w-px bg-slate-200/80 sm:right-9 md:block lg:right-16">
+      </div>
+      <div
+        class="pointer-events-none absolute left-6 top-0 hidden h-full w-px bg-slate-200/80 sm:left-9 md:block lg:left-16">
+      </div>
+
+      <div class="pt-0 relative">
+        <!-- CTA Card (Seção 11: Formulário de Contato) -->
+        <div id="proposta"
+          class="border border-slate-200 bg-white p-10 shadow-[0_12px_40px_rgba(15,23,42,0.03)] sm:p-16 lg:p-20">
+          <div class="grid gap-12 lg:grid-cols-2 lg:items-start">
+            <!-- Text -->
+            <div class="">
+              <div
+                class="mb-6 flex items-center gap-2.5 text-xs font-medium uppercase tracking-[0.12em] text-slate-500">
+                <div class="grid grid-cols-2 gap-[2px]">
+                  <span class="h-1.5 w-1.5 bg-blue-700"></span>
+                  <span class="h-1.5 w-1.5 bg-blue-700"></span>
+                  <span class="h-1.5 w-1.5 bg-blue-700"></span>
+                  <span class="h-1.5 w-1.5 bg-blue-700"></span>
+                </div>
+                CONVERSAR COM A EQUIPE
+              </div>
+
+              <h2 class="text-4xl font-medium leading-[1.14] tracking-tight text-slate-950 sm:text-5xl">
+                Receba uma proposta para <span class="text-blue-700">a sua operação.</span>
+              </h2>
+
+              <p class="mt-6 text-lg leading-7 text-slate-500">
+                Conte quantos pontos você tem e qual produto te interessa. Nossa equipe analisa e volta com uma proposta
+                para o seu caso.
+              </p>
+
+              <div class="mt-10 flex flex-wrap items-center gap-4 text-sm font-normal text-slate-600">
+                <div class="flex items-center gap-2.5 border border-slate-200 bg-slate-50/50 px-4 py-2">
+                  <i data-lucide="headset" class="h-4 w-4 text-blue-700"></i>
+                  Atendimento direto com especialista
+                </div>
+
+                <div class="flex items-center gap-2.5 border border-slate-200 bg-slate-50/50 px-4 py-2">
+                  <i data-lucide="sliders" class="h-4 w-4 text-blue-700"></i>
+                  Projeto dimensionado por operação
+                </div>
+
+                <div class="flex items-center gap-2.5 border border-slate-200 bg-slate-50/50 px-4 py-2">
+                  <i data-lucide="map-pin" class="h-4 w-4 text-blue-700"></i>
+                  Atendemos todo o Brasil
+                </div>
+              </div>
+            </div>
+
+            <!-- Formulário de Contato (7 campos) -->
+            <form id="contact-form" class="space-y-4 rounded-2xl border border-slate-200 bg-slate-50/50 p-6 sm:p-8"
+              novalidate>
+              <!-- Campo 1: Nome -->
+              <div>
+                <label for="nome"
+                  class="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1.5">Nome *</label>
+                <input type="text" id="nome" name="nome" required placeholder="Como podemos te chamar?"
+                  class="w-full h-12 rounded-xl border border-slate-200 bg-white px-4 text-sm text-slate-950 placeholder:text-slate-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-600/10 outline-none">
+                <p id="err-nome" class="hidden mt-1 text-xs text-red-600">Precisamos do seu nome para responder.</p>
+              </div>
+
+              <!-- Campo 2: E-mail -->
+              <div>
+                <label for="email"
+                  class="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1.5">E-mail *</label>
+                <input type="email" id="email" name="email" required placeholder="seu@email.com.br"
+                  class="w-full h-12 rounded-xl border border-slate-200 bg-white px-4 text-sm text-slate-950 placeholder:text-slate-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-600/10 outline-none">
+                <p id="err-email" class="hidden mt-1 text-xs text-red-600">Confira o e-mail — parece estar incompleto.
+                </p>
+              </div>
+
+              <!-- Campo 3: WhatsApp -->
+              <div>
+                <label for="whatsapp"
+                  class="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1.5">Telefone ou
+                  WhatsApp *</label>
+                <input type="tel" id="whatsapp" name="whatsapp" required placeholder="(00) 00000-0000"
+                  class="w-full h-12 rounded-xl border border-slate-200 bg-white px-4 text-sm text-slate-950 placeholder:text-slate-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-600/10 outline-none">
+                <p id="err-whatsapp" class="hidden mt-1 text-xs text-red-600">Informe um telefone com DDD.</p>
+              </div>
+
+              <!-- Campo 4: Empresa e cidade -->
+              <div>
+                <label for="empresa_cidade"
+                  class="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1.5">Empresa e
+                  cidade</label>
+                <input type="text" id="empresa_cidade" name="empresa_cidade"
+                  placeholder="Nome da empresa e onde você está"
+                  class="w-full h-12 rounded-xl border border-slate-200 bg-white px-4 text-sm text-slate-950 placeholder:text-slate-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-600/10 outline-none">
+              </div>
+
+              <!-- Campo 5: Solução -->
+              <div>
+                <label for="solucao"
+                  class="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1.5">Qual solução te
+                  interessa? *</label>
+                <div class="form-select-wrapper">
+                  <select id="solucao" name="solucao" required
+                    class="select-placeholder w-full h-12 rounded-xl border border-slate-200 bg-white px-4 text-sm outline-none">
+                    <option value="" disabled selected>Selecione uma opção</option>
+                    <option value="midia-indoor">Mídia Indoor</option>
+                    <option value="totem-digital">Totem Digital</option>
+                    <option value="cartazeamento">Cartazeamento Digital</option>
+                    <option value="ainda-nao-sei">Ainda não sei, quero entender</option>
+                  </select>
+                </div>
+                <p id="err-solucao" class="hidden mt-1 text-xs text-red-600">Escolha uma opção. Se estiver em dúvida,
+                  marque "Ainda não sei".</p>
+              </div>
+
+              <!-- Campo 6: Pontos ou lojas -->
+              <div>
+                <label for="pontos"
+                  class="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1.5">Quantos pontos ou
+                  lojas? *</label>
+                <div class="form-select-wrapper">
+                  <select id="pontos" name="pontos" required
+                    class="select-placeholder w-full h-12 rounded-xl border border-slate-200 bg-white px-4 text-sm outline-none">
+                    <option value="" disabled selected>Selecione uma faixa</option>
+                    <option value="1">1 ponto</option>
+                    <option value="2-9">2 a 9</option>
+                    <option value="10-49">10 a 49</option>
+                    <option value="50+">50 ou mais</option>
+                  </select>
+                </div>
+                <p id="err-pontos" class="hidden mt-1 text-xs text-red-600">Selecione uma faixa. É o que usamos para
+                  dimensionar a proposta.</p>
+              </div>
+
+              <!-- Campo 7: Mensagem -->
+              <div>
+                <label for="mensagem"
+                  class="block text-xs font-semibold uppercase tracking-wider text-slate-700 mb-1.5">Mensagem</label>
+                <textarea id="mensagem" name="mensagem" rows="3" placeholder="Conte o que você precisa resolver."
+                  class="w-full rounded-xl border border-slate-200 bg-white p-4 text-sm text-slate-950 placeholder:text-slate-400 focus:border-blue-600 focus:ring-2 focus:ring-blue-600/10 outline-none resize-none"></textarea>
+              </div>
+
+              <!-- Feedback do Envio (Erro Geral) -->
+              <div id="form-feedback"
+                class="hidden rounded-xl border border-red-200 bg-red-50 p-4 text-xs font-medium text-red-700">
+                <p id="feedback-text">Não conseguimos enviar agora. Tente de novo ou fale com a gente no WhatsApp.</p>
+              </div>
+
+              <!-- Botão de envio — mesmo componente dos CTAs primários do site -->
+              <div class="pt-4">
+                <button type="submit"
+                  class="group inline-flex items-center justify-between overflow-hidden text-[16px] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_22px_48px_rgba(0,87,255,0.36),inset_0_1px_0_rgba(255,255,255,0.38)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/25 focus-visible:ring-offset-2 active:translate-y-0 active:scale-[0.99] motion-reduce:transition-none font-semibold text-white tracking-[-0.02em] bg-gradient-to-br from-[var(--color-action-from)] via-[var(--color-action-mid)] to-[var(--color-action-to)] w-full h-14 rounded-[18px] pt-0 pr-3 pb-0 pl-7 relative shadow-[0_18px_38px_rgba(0,87,255,0.28),inset_0_1px_0_rgba(255,255,255,0.32)]">
+                  <span
+                    class="pointer-events-none absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-white/24 to-transparent opacity-80"></span>
+                  <span
+                    class="pointer-events-none absolute -right-12 -top-20 h-36 w-36 bg-white/20 blur-2xl transition-transform duration-500 group-hover:translate-x-3 group-hover:translate-y-3"
+                    style="border-radius: 999px"></span>
+                  <span class="relative z-10 whitespace-nowrap">Solicitar proposta</span>
+                  <span
+                    class="relative z-10 ml-4 inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-[14px] border border-white/15 bg-white/15 shadow-[inset_0_1px_0_rgba(255,255,255,0.32)] backdrop-blur-md transition-all duration-300 group-hover:bg-white/22 group-hover:translate-x-0.5 motion-reduce:transition-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
+                      class="h-5 w-5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 motion-reduce:transition-none">
+                      <path d="M7 7h10v10"></path>
+                      <path d="M7 17 17 7"></path>
+                    </svg>
+                  </span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+
+        <!-- Footer §12 -->
+        <footer
+          class="sm:px-10 lg:pr-0 lg:pl-0 lg:pb-0 lg:pt-0 bg-white border-slate-200/80 border-t pt-0 pr-0 pb-0 pl-0 mt-16 lg:mt-24">
+          <div
+            class="overflow-hidden border border-slate-200/80 bg-gradient-to-br from-white via-slate-50 to-blue-50/40">
+            <div class="grid border-b border-slate-200/80 lg:grid-cols-[1.1fr_1.25fr_1.1fr]">
+              <!-- Brand / Info -->
+              <div class="border-b border-slate-200/80 p-8 sm:p-10 lg:border-b-0 lg:border-r lg:p-12">
+                <div class="mb-8 flex items-center">
+                  <a href="/" aria-label="ConexOn — tecnologia para comunicação digital">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="711" height="139" fill="none" viewBox="0 0 711 139"
+                      class="h-7 w-auto sm:h-8" role="img" aria-label="ConexOn — tecnologia para comunicação digital">
+                      <path fill="#0d1321"
+                        d="M43.92 138.741v-15.78h1.739l7.119 11.982h-.813l7.063-11.982h1.738v15.78h-1.934V126.03h.337l-6.377 10.735h-.925l-6.489-10.735h.449v12.711h-1.934zM77.527 120.663l3.826-3.462h2.649l-4.527 3.462h-1.962zm.84 18.078v-15.78h2.019v15.78zM97.988 138.741v-15.78h6.629c1.794 0 3.321.337 4.61.995 1.29.659 2.271 1.584 2.971 2.761q1.052 1.766 1.052 4.12c0 1.57-.351 2.971-1.052 4.148-.7 1.178-1.695 2.103-2.971 2.761-1.289.659-2.816.995-4.61.995zm2.004-1.681h4.527c1.415 0 2.62-.267 3.629-.785 1.009-.519 1.766-1.248 2.285-2.186.518-.939.784-2.019.784-3.266s-.266-2.34-.784-3.265c-.519-.925-1.29-1.654-2.285-2.158-.995-.505-2.214-.771-3.629-.771h-4.527zM129.254 138.741v-15.78h2.018v15.78zM145.987 138.741l7.287-15.78h1.99l7.288 15.78h-2.018l-6.629-14.701h.7l-6.656 14.701h-1.99zm3.069-4.078.588-1.626h8.998l.588 1.626zM196.354 138.741v-15.78h2.018v15.78zM215.974 138.741v-15.78h1.654l10.735 13.3h-.785v-13.3h2.018v15.78h-1.682l-10.735-13.327h.813v13.327zM247.184 138.741v-15.78h6.629c1.793 0 3.321.337 4.61.995 1.29.659 2.271 1.584 2.971 2.761q1.051 1.766 1.051 4.12c0 1.57-.35 2.971-1.051 4.148-.7 1.178-1.695 2.103-2.971 2.761-1.289.659-2.817.995-4.61.995zm2.018-1.681h4.526c1.416 0 2.621-.267 3.63-.785 1.009-.519 1.766-1.248 2.284-2.186.519-.939.785-2.019.785-3.266s-.266-2.34-.785-3.265c-.518-.925-1.289-1.654-2.284-2.158-.995-.505-2.214-.771-3.63-.771h-4.526zM285.359 138.91c-1.626 0-3.069-.351-4.359-1.052-1.289-.7-2.298-1.653-3.027-2.872-.743-1.22-1.107-2.607-1.107-4.149s.364-2.929 1.107-4.134c.729-1.205 1.752-2.172 3.027-2.873 1.29-.701 2.733-1.065 4.331-1.065 1.597 0 3.069.35 4.344 1.065s2.284 1.668 3.013 2.873 1.107 2.593 1.107 4.134-.364 2.929-1.107 4.149a7.7 7.7 0 0 1-3.013 2.872c-1.275.701-2.719 1.052-4.316 1.052m-.028-1.738c1.247 0 2.354-.281 3.321-.827a5.9 5.9 0 0 0 2.284-2.27c.561-.953.841-2.032.841-3.224 0-1.191-.28-2.312-.841-3.265a6.04 6.04 0 0 0-2.284-2.242c-.967-.547-2.074-.827-3.321-.827s-2.327.28-3.308.827a6 6 0 0 0-2.298 2.242c-.561.953-.841 2.046-.841 3.265s.28 2.271.841 3.224c.561.967 1.331 1.709 2.298 2.27.981.546 2.088.827 3.308.827M316.708 138.91c-1.625 0-3.069-.351-4.358-1.052-1.289-.7-2.298-1.653-3.027-2.872-.743-1.22-1.107-2.607-1.107-4.149s.364-2.929 1.107-4.134c.729-1.205 1.752-2.172 3.027-2.873 1.289-.701 2.733-1.065 4.33-1.065 1.598 0 3.07.35 4.345 1.065s2.284 1.668 3.013 2.873 1.107 2.593 1.107 4.134-.364 2.929-1.107 4.149a7.7 7.7 0 0 1-3.013 2.872c-1.275.701-2.719 1.052-4.317 1.052m-.028-1.738c1.248 0 2.355-.281 3.322-.827a5.93 5.93 0 0 0 2.284-2.27c.561-.953.841-2.032.841-3.224 0-1.191-.28-2.312-.841-3.265a6.05 6.05 0 0 0-2.284-2.242c-.967-.547-2.074-.827-3.322-.827-1.247 0-2.326.28-3.307.827a6 6 0 0 0-2.298 2.242c-.561.953-.841 2.046-.841 3.265s.28 2.271.841 3.224c.56.967 1.331 1.709 2.298 2.27.981.546 2.088.827 3.307.827M341.149 122.961h6.125c1.373 0 2.55.21 3.531.645.981.434 1.738 1.051 2.271 1.864.546.813.812 1.794.812 2.943s-.266 2.088-.812 2.901c-.547.813-1.304 1.443-2.271 1.878-.981.434-2.158.644-3.531.644h-5.003l.896-.897v5.816h-2.018zm2.018 10.161-.784-.953h4.807c1.527 0 2.69-.337 3.489-.995.799-.659 1.205-1.584 1.205-2.775s-.406-2.144-1.205-2.789c-.799-.659-1.962-.981-3.489-.981h-4.807l.784-.953zm8.801 5.619-4.134-5.732h2.214l4.107 5.732zM70.758 101.744H28.519c-10.174 0-17.476-2.215-21.89-6.63C2.214 90.7 0 83.4 0 73.225V51.489c0-10.174 2.214-17.475 6.629-21.89s11.716-6.629 21.89-6.629h42.239v17.266H31.602q-3.699 0-6.012.462c-1.541.309-2.719.87-3.546 1.696-.826.827-1.387 2.004-1.695 3.546q-.463 2.312-.463 6.012v20.811q0 3.7.463 6.012c.308 1.542.869 2.719 1.695 3.546s2.005 1.387 3.546 1.696q2.313.462 6.012.462h39.156zM87.561 51.488c0-10.174 2.214-17.475 6.629-21.89s11.716-6.629 21.89-6.629h21.891c10.076 0 17.321 2.229 21.736 6.713 4.414 4.47 6.628 11.744 6.628 21.806v21.737c0 10.076-2.214 17.35-6.628 21.82-4.415 4.47-11.66 6.713-21.736 6.713H116.08c-10.174 0-17.475-2.215-21.89-6.63-4.415-4.414-6.629-11.715-6.629-21.89zm19.886 21.274q0 3.7.463 6.012c.308 1.542.869 2.719 1.696 3.546.826.827 2.004 1.387 3.545 1.696q2.313.462 6.012.462h15.57q3.7 0 6.012-.462c1.542-.309 2.747-.87 3.616-1.696.869-.827 1.444-2.004 1.696-3.546q.378-2.312.378-6.012V51.951q0-3.7-.378-6.012c-.252-1.542-.827-2.719-1.696-3.546s-2.088-1.387-3.616-1.696q-2.311-.462-6.012-.462h-15.57q-3.699 0-6.012.462c-1.541.309-2.719.87-3.545 1.696-.827.827-1.388 2.004-1.696 3.546q-.463 2.312-.463 6.012zM245.572 101.744V51.951q0-3.7-.462-6.012c-.309-1.542-.869-2.719-1.696-3.546s-2.004-1.387-3.546-1.696q-2.311-.462-6.012-.462h-14.799q-3.699 0-6.012.462c-1.542.309-2.719.87-3.546 1.696-.826.827-1.387 2.004-1.695 3.546q-.463 2.312-.463 6.012v49.793h-19.886V51.488c0-10.174 2.214-17.475 6.629-21.89s11.716-6.629 21.89-6.629h20.965c10.175 0 17.476 2.215 21.891 6.63 4.414 4.414 6.628 11.715 6.628 21.89v50.255zM286.115 49.793c0-9.558 2.215-16.411 6.629-20.573 4.415-4.162 11.716-6.25 21.89-6.25h23.432c9.558 0 16.439 1.947 20.657 5.857 4.219 3.91 6.321 10.273 6.321 19.116v2.775c0 8.324-2.102 14.336-6.321 18.036s-11.099 5.55-20.657 5.55h-14.645c-3.798 0-7.217-.337-10.258-.995-3.027-.673-5.424-1.668-7.175-3.013v3.7c0 2.466.126 4.47.392 6.011.252 1.542.827 2.72 1.696 3.546.869.827 2.088 1.388 3.615 1.696q2.313.462 6.013.462h37.922v16.033H314.62c-10.174 0-17.475-2.243-21.89-6.713s-6.629-11.744-6.629-21.82V49.778zm19.887-.771c0 2.06.126 3.728.392 5.017.252 1.29.771 2.284 1.542 3 .77.714 1.821 1.204 3.153 1.456 1.331.253 3.083.393 5.241.393h18.345c2.158 0 3.938-.126 5.311-.392q2.082-.379 3.238-1.388c.77-.672 1.289-1.64 1.541-2.929.252-1.29.392-2.9.392-4.849 0-2.06-.126-3.7-.392-4.933-.252-1.233-.771-2.186-1.541-2.859q-1.156-1.008-3.154-1.387c-1.331-.252-3.139-.393-5.395-.393H316.33c-2.158 0-3.924.099-5.311.309s-2.439.644-3.153 1.317c-.715.673-1.206 1.612-1.458 2.845s-.392 2.83-.392 4.779zM538.218 51.488c0-5.241.463-9.641 1.388-13.173s2.495-6.419 4.709-8.633 5.087-3.784 8.632-4.695c3.546-.925 7.946-1.387 13.188-1.387h18.653c5.241 0 9.642.462 13.173 1.387 3.546.925 6.419 2.495 8.633 4.695 2.214 2.214 3.784 5.087 4.709 8.633s1.387 7.932 1.387 13.173v22.353c0 5.242-.462 9.642-1.387 13.188-.925 3.545-2.495 6.418-4.709 8.632-2.215 2.215-5.087 3.784-8.633 4.709s-7.946 1.388-13.173 1.388h-18.653c-5.242 0-9.642-.463-13.188-1.388-3.545-.925-6.418-2.494-8.632-4.709-2.215-2.214-3.784-5.087-4.709-8.633s-1.388-7.946-1.388-13.187zm11.1 23.432c0 3.392.238 6.195.7 8.409.463 2.214 1.332 3.952 2.621 5.241 1.289 1.29 3.027 2.158 5.241 2.62 2.215.463 5.017.701 8.409.701h18.345c3.391 0 6.194-.238 8.408-.7 2.214-.463 3.952-1.332 5.241-2.62 1.29-1.29 2.159-3.028 2.621-5.242s.701-5.017.701-8.409V50.41c0-3.392-.238-6.195-.701-8.41s-1.331-3.951-2.621-5.24c-1.289-1.29-3.027-2.159-5.241-2.621s-5.017-.701-8.408-.701h-18.345c-3.392 0-6.194.238-8.409.7-2.214.463-3.952 1.332-5.241 2.621-1.289 1.29-2.158 3.027-2.621 5.242-.462 2.214-.7 5.017-.7 8.408zM699.775 101.744V50.409c0-3.391-.238-6.194-.701-8.408-.462-2.215-1.331-3.952-2.621-5.242-1.289-1.289-3.027-2.158-5.241-2.62s-5.017-.701-8.409-.701h-16.494c-3.392 0-6.195.238-8.409.7-2.214.463-3.952 1.332-5.241 2.621-1.29 1.29-2.159 3.027-2.621 5.242s-.701 5.017-.701 8.408v51.335h-11.099V51.488c0-5.241.462-9.641 1.387-13.173s2.495-6.419 4.709-8.633c2.215-2.214 5.087-3.784 8.633-4.695 3.546-.925 7.946-1.387 13.187-1.387h16.958c5.241 0 9.641.462 13.173 1.387 3.546.925 6.405 2.495 8.563 4.695 2.158 2.214 3.728 5.087 4.695 8.633.981 3.546 1.457 7.932 1.457 13.173v50.256h-11.253z" />
+                      <path fill="#0057ff" d="m410.8 0 63.597 64.452-35.61 37.306H396.38l35.624-36.451L366.711 0z" />
+                      <path fill="#00b4ff"
+                        d="m460.271 43.108 26.29-26.291h34.77L478.083 60.92zM459.472 86.496l18.653-18.653 59.364 58.51h-38.161z" />
+                    </svg>
+                  </a>
+                </div>
+
+                <span
+                  class="inline-flex border border-slate-200 bg-white px-3 py-1 text-xs font-medium uppercase tracking-[0.18em] text-slate-500 shadow-sm">
+                  Tecnologia para comunicação digital
+                </span>
+
+                <h3 class="mt-6 max-w-[420px] text-3xl font-semibold tracking-[-0.04em] text-slate-950">
+                  Tecnologia para comunicação digital.
+                </h3>
+
+                <p class="mt-5 max-w-[380px] text-base leading-7 text-slate-500">
+                  Mídia indoor, totem digital e cartazeamento digital para o seu ponto comercial. Software, equipamento
+                  em locação, instalação, treinamento e suporte em todo o Brasil.
+                </p>
+
+                <div class="mt-8 flex items-center gap-3">
+                  <a href="https://wa.me/5511982590000?text=Ol%C3%A1!%20Gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20as%20solu%C3%A7%C3%B5es%20da%20ConexOn."
+                    data-wa-section="footer"
+                    class="btn-whatsapp group relative inline-flex h-14 w-auto items-center justify-center overflow-hidden rounded-[18px] border border-[var(--color-border-subtle)] bg-gradient-to-b from-white to-[var(--color-surface-tint)] pl-7 pr-3 text-[16px] font-semibold tracking-[-0.02em] text-[var(--color-brand-deep)] shadow-[0_14px_32px_rgba(15,23,42,0.07),inset_0_1px_0_rgba(255,255,255,0.9)] transition-all duration-300 hover:-translate-y-0.5 hover:border-[var(--color-border-hover)] hover:shadow-[0_18px_42px_rgba(15,23,42,0.1),inset_0_1px_0_rgba(255,255,255,1)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/20 focus-visible:ring-offset-2 active:translate-y-0 active:scale-[0.99] motion-reduce:transition-none sm:w-auto"
+                    aria-label="Falar no WhatsApp">
+                    <span
+                      class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(59,130,246,0.12),transparent_55%)] opacity-80"></span>
+                    <span class="relative z-10 whitespace-nowrap">Falar no WhatsApp</span>
+                    <span
+                      class="relative z-10 ml-4 inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-[14px] border border-[var(--color-border-icon)] bg-white shadow-[0_8px_20px_rgba(15,23,42,0.08),inset_0_1px_0_rgba(255,255,255,1)] transition-all duration-300 group-hover:scale-[1.03] group-hover:border-[var(--color-border-icon-hover)] motion-reduce:transition-none">
+                      <i data-lucide="message-circle" class="h-5 w-5 text-[var(--color-brand-deep)]"></i>
+                    </span>
+                  </a>
+                </div>
+              </div>
+
+              <!-- Brand Symbol Element -->
+              <div
+                class="relative flex min-h-[320px] items-center justify-center border-b border-slate-200/80 p-10 lg:border-b-0 lg:border-r">
+                <div
+                  class="absolute inset-0 bg-[linear-gradient(to_right,rgba(226,232,240,0.7)_1px,transparent_1px),linear-gradient(to_bottom,rgba(226,232,240,0.7)_1px,transparent_1px)] bg-[size:48px_48px] bg-center opacity-50">
+                </div>
+
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 164 121" fill="none"
+                  class="relative w-[192px] max-w-[55%] h-auto" aria-hidden="true">
+                  <path fill="#0d1321" d="m42.221 0 60.903 61.721-34.102 35.726h-40.61L62.526 62.54 0 0z" />
+                  <path fill="#00b4ff"
+                    d="m89.596 41.282 25.177-25.177h33.296l-41.415 42.234zM88.83 82.832l17.864-17.863L163.543 121h-36.544z" />
+                </svg>
+              </div>
+
+              <!-- Link Columns -->
+              <div class="grid sm:grid-cols-2">
+                <!-- Coluna Soluções -->
+                <div class="border-b border-slate-200/80 p-8 sm:border-r sm:p-10">
+                  <h4 class="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-slate-950">
+                    <i data-lucide="tv" class="h-4 w-4 text-blue-700"></i>
+                    Soluções
+                  </h4>
+
+                  <ul class="mt-7 space-y-4 text-sm text-slate-500">
+                    <li>
+                      <a href="#midia-indoor" class="group flex items-center transition hover:text-blue-700">
+                        <span
+                          class="mr-2 text-slate-400 transition group-hover:translate-x-0.5 group-hover:text-blue-700">›</span>
+                        Mídia Indoor
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#totem-digital" class="group flex items-center transition hover:text-blue-700">
+                        <span
+                          class="mr-2 text-slate-400 transition group-hover:translate-x-0.5 group-hover:text-blue-700">›</span>
+                        Totem Digital
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#cartazeamento-digital" class="group flex items-center transition hover:text-blue-700">
+                        <span
+                          class="mr-2 text-slate-400 transition group-hover:translate-x-0.5 group-hover:text-blue-700">›</span>
+                        Cartazeamento Digital
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+
+                <!-- Coluna Navegação -->
+                <div class="border-b border-slate-200/80 p-8 sm:p-10">
+                  <h4 class="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-slate-950">
+                    <i data-lucide="compass" class="h-4 w-4 text-blue-700"></i>
+                    Navegação
+                  </h4>
+
+                  <ul class="mt-7 space-y-4 text-sm text-slate-500">
+                    <li>
+                      <a href="#segmentos" class="group flex items-center transition hover:text-blue-700">
+                        <span
+                          class="mr-2 text-slate-400 transition group-hover:translate-x-0.5 group-hover:text-blue-700">›</span>
+                        Para quem é
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#formatos" class="group flex items-center transition hover:text-blue-700">
+                        <span
+                          class="mr-2 text-slate-400 transition group-hover:translate-x-0.5 group-hover:text-blue-700">›</span>
+                        Como contratar
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#faq" class="group flex items-center transition hover:text-blue-700">
+                        <span
+                          class="mr-2 text-slate-400 transition group-hover:translate-x-0.5 group-hover:text-blue-700">›</span>
+                        Dúvidas
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#proposta" class="group flex items-center transition hover:text-blue-700">
+                        <span
+                          class="mr-2 text-slate-400 transition group-hover:translate-x-0.5 group-hover:text-blue-700">›</span>
+                        Solicitar proposta
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- Huge Brand Title -->
+            <div class="grid border-b border-slate-200/80 lg:grid-cols-[1fr_1fr]">
+              <div class="border-b border-slate-200/80 px-8 py-10 sm:px-10 lg:border-b-0 lg:border-r lg:px-12 lg:py-14">
+                <h2 class="text-[clamp(48px,10vw,160px)] font-black leading-[0.98] tracking-[-0.09em] text-slate-950 pr-4">
+                  <span>ConexOn</span>
+                </h2>
+              </div>
+
+              <div class="flex items-end px-8 py-10 sm:px-10 lg:px-12 lg:py-14">
+                <p
+                  class="max-w-xl text-[clamp(24px,4vw,64px)] font-black leading-[1.05] tracking-[-0.08em] text-blue-700">
+                  TECNOLOGIA PARA COMUNICAÇÃO DIGITAL
+                </p>
+              </div>
+            </div>
+
+            <!-- Bottom Row -->
+            <div class="flex flex-col gap-6 px-8 py-8 pb-16 sm:px-10 lg:flex-row lg:items-center lg:justify-between lg:px-12 lg:py-8 lg:pb-10">
+              <div class="flex flex-wrap items-center gap-6 text-sm text-slate-500">
+                <span class="flex h-8 w-8 items-center justify-center border border-blue-100 bg-blue-50 text-blue-700">
+                  <i data-lucide="shield-check" class="h-4 w-4"></i>
+                </span>
+
+                <p>© 2026 ConexOn. CNPJ 00.000.000/0001-00 <!-- TODO: confirmar CNPJ --> · <a href="privacidade.html"
+                    class="underline hover:text-blue-700">Política de Privacidade</a>
+                  <!-- TODO: criar privacidade.html --></p>
+              </div>
+
+              <div class="text-xs text-slate-400 lg:text-right">
+                <p>Segunda a sexta, 9h às 18h <!-- TODO: confirmar com cliente --> · Criado por Jefferson</p>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </section>
+
+  <!-- Banner de Consentimento de Cookies (LGPD) -->
+  <div id="cookie-consent-banner" role="dialog" aria-label="Consentimento de cookies"
+    aria-describedby="cookie-consent-text"
+    class="hidden fixed bottom-0 inset-x-0 z-50 border-t border-slate-200 bg-white/95 backdrop-blur-md shadow-[0_-8px_30px_rgba(0,0,0,0.06)] pb-[max(1rem,env(safe-area-inset-bottom))] pt-4 px-4 sm:px-8">
+    <div class="mx-auto flex max-w-[1600px] flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+      <p id="cookie-consent-text" class="text-xs sm:text-sm text-slate-600 leading-relaxed max-w-4xl">
+        Usamos cookies para melhorar sua experiência no site. Ao continuar navegando, você concorda com nossa <a
+          href="privacidade.html"
+          class="font-medium text-slate-900 underline hover:text-[var(--color-primary)]">Política
+          de Privacidade</a>.
+      </p>
+      <div class="flex items-center gap-4 shrink-0">
+        <a href="privacidade.html"
+          class="text-xs sm:text-sm text-slate-500 hover:text-slate-800 underline transition-colors">Saber mais</a>
+        <button id="btn-accept-cookie" type="button"
+          class="inline-flex items-center justify-center rounded-xl bg-gradient-to-br from-[var(--color-action-from)] via-[var(--color-action-mid)] to-[var(--color-action-to)] px-6 py-2.5 text-xs sm:text-sm font-semibold text-white shadow-sm hover:shadow-md transition-all active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2">
+          Aceitar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript Config and Logic -->
+  <script>
+    // Centralized Constants
+    const WHATSAPP_NUMBER = "5511982590000";
+    const FORM_ENDPOINT = null; // TODO: definir hospedagem
+
+    document.addEventListener("DOMContentLoaded", () => {
+      // Initialize WhatsApp buttons with global constant and section-specific prefilled messages
+      const defaultWaMessages = {
+        'hero': 'Olá! Vim pelo site da ConexOn e gostaria de saber mais.',
+        'segmentos': 'Olá! Gostaria de entender qual solução ConexOn faz mais sentido para o meu negócio.',
+        'formatos': 'Olá! Gostaria de falar com um especialista sobre um projeto personalizado da ConexOn.',
+        'faq-suporte': 'Olá! Tenho uma dúvida específica sobre as soluções da ConexOn.',
+        'faq-bottom': 'Olá! Tenho dúvidas sobre as soluções da ConexOn e gostaria de falar com a equipe.',
+        'footer': 'Olá! Gostaria de mais informações sobre as soluções da ConexOn.'
+      };
+
+      document.querySelectorAll('a.btn-whatsapp, a[aria-label="Falar no WhatsApp"], a[aria-label="Falar com um especialista"]').forEach(el => {
+        const section = el.getAttribute('data-wa-section') || 'hero';
+        const customMsg = el.getAttribute('data-wa-message') || defaultWaMessages[section] || 'Olá! Gostaria de mais informações sobre a ConexOn.';
+        el.setAttribute('href', `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(customMsg)}`);
+      });
+
+      // Cookie Consent LGPD Banner
+      const cookieBanner = document.getElementById('cookie-consent-banner');
+      const acceptBtn = document.getElementById('btn-accept-cookie');
+
+      if (cookieBanner && acceptBtn) {
+        const handleKeyDown = (e) => {
+          if (e.key === 'Escape' && !cookieBanner.classList.contains('hidden')) {
+            acceptCookies();
+          }
+        };
+
+        const acceptCookies = () => {
+          localStorage.setItem('conexon_cookie_consent', 'accepted');
+          cookieBanner.classList.add('hidden');
+          document.removeEventListener('keydown', handleKeyDown);
+        };
+
+        if (localStorage.getItem('conexon_cookie_consent') !== 'accepted') {
+          cookieBanner.classList.remove('hidden');
+          document.addEventListener('keydown', handleKeyDown);
+          setTimeout(() => {
+            acceptBtn.focus();
+          }, 100);
+        }
+
+        acceptBtn.addEventListener('click', acceptCookies);
+      }
+
+      // Form Validation & Submission Handling
+      const form = document.getElementById('contact-form');
+      if (form) {
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+
+          // Reset error states
+          let isValid = true;
+          const errors = ['nome', 'email', 'whatsapp', 'solucao', 'pontos'];
+          errors.forEach(field => {
+            const errEl = document.getElementById(`err-${field}`);
+            if (errEl) errEl.classList.add('hidden');
+          });
+          const feedbackEl = document.getElementById('form-feedback');
+          if (feedbackEl) feedbackEl.classList.add('hidden');
+
+          // Validate Nome
+          const nomeInput = document.getElementById('nome');
+          if (!nomeInput || !nomeInput.value.trim()) {
+            document.getElementById('err-nome')?.classList.remove('hidden');
+            isValid = false;
+          }
+
+          // Validate Email
+          const emailInput = document.getElementById('email');
+          if (!emailInput || !emailInput.value.includes('@') || !emailInput.value.includes('.')) {
+            document.getElementById('err-email')?.classList.remove('hidden');
+            isValid = false;
+          }
+
+          // Validate WhatsApp
+          const waInput = document.getElementById('whatsapp');
+          if (!waInput || !waInput.value.trim()) {
+            document.getElementById('err-whatsapp')?.classList.remove('hidden');
+            isValid = false;
+          }
+
+          // Validate Solucao
+          const solucaoSelect = document.getElementById('solucao');
+          if (!solucaoSelect || !solucaoSelect.value) {
+            document.getElementById('err-solucao')?.classList.remove('hidden');
+            isValid = false;
+          }
+
+          // Validate Pontos
+          const pontosSelect = document.getElementById('pontos');
+          if (!pontosSelect || !pontosSelect.value) {
+            document.getElementById('err-pontos')?.classList.remove('hidden');
+            isValid = false;
+          }
+
+          if (!isValid) return;
+
+          // Form Submit Logic — FORM_ENDPOINT Check
+          if (FORM_ENDPOINT === null) {
+            // Visible failure message as instructed (no false successful simulation)
+            if (feedbackEl) {
+              document.getElementById('feedback-text').textContent = "Não conseguimos enviar agora. Tente de novo ou fale com a gente no WhatsApp.";
+              feedbackEl.classList.remove('hidden');
+            }
+          } else {
+            // Real submit logic when endpoint is defined
+            fetch(FORM_ENDPOINT, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(Object.fromEntries(new FormData(form)))
+            }).catch(() => {
+              if (feedbackEl) feedbackEl.classList.remove('hidden');
+            });
+          }
+        });
+      }
+    });
+  </script>
+
+  <script>
+    lucide.createIcons({
+      attrs: {
+        "stroke-width": 1.5
+      }
+    });
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // Fallback global de segurança: garante visibilidade total após 2s ou em caso de falha
+      function revealAllFallback() {
+        document.querySelectorAll('.gsap-reveal-word').forEach(el => {
+          el.style.opacity = '1';
+          el.style.filter = 'none';
+          el.style.transform = 'none';
+        });
+        document.querySelectorAll('.gsap-reveal-outer').forEach(el => {
+          el.style.overflow = 'visible';
+        });
+        document.querySelectorAll('*').forEach(el => {
+          const style = el.getAttribute('style');
+          if (style && (style.includes('opacity: 0') || style.includes('opacity:0') || style.includes('blur('))) {
+            el.style.opacity = '1';
+            el.style.filter = 'none';
+            el.style.transform = 'none';
+          }
+        });
+      }
+
+      // Timeout de segurança de 2 segundos
+      const fallbackTimer = setTimeout(revealAllFallback, 2000);
+
+      // Disparador de segurança em rolagem até o fim da página
+      window.addEventListener('scroll', () => {
+        if ((window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 120)) {
+          revealAllFallback();
+        }
+      }, { passive: true });
+
+      try {
+        if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+          revealAllFallback();
+          return;
+        }
+
+        gsap.registerPlugin(ScrollTrigger);
+
+        function wrapWords(node) {
+          if (node.nodeName === 'SCRIPT' || node.nodeName === 'STYLE' || node.classList?.contains('gsap-reveal-word')) return;
+          if (node.nodeType === Node.TEXT_NODE) {
+            let text = node.textContent;
+            if (!text.trim()) return;
+            let words = text.split(/(\s+)/);
+            let fragment = document.createDocumentFragment();
+            words.forEach(word => {
+              if (word.trim()) {
+                let outer = document.createElement('span');
+                outer.className = 'gsap-reveal-outer';
+                outer.style.display = 'inline-block';
+                outer.style.overflow = 'hidden';
+                outer.style.verticalAlign = 'bottom';
+                outer.style.paddingTop = '0.22em';
+                outer.style.paddingBottom = '0.22em';
+                outer.style.paddingRight = '0.12em';
+                outer.style.marginTop = '-0.22em';
+                outer.style.marginBottom = '-0.22em';
+                outer.style.marginRight = '-0.12em';
+
+                let inner = document.createElement('span');
+                inner.style.display = 'inline-block';
+                inner.className = 'gsap-reveal-word';
+                inner.textContent = word;
+                inner.style.willChange = 'transform, opacity, filter';
+
+                outer.appendChild(inner);
+                fragment.appendChild(outer);
+              } else {
+                fragment.appendChild(document.createTextNode(word));
+              }
+            });
+            node.parentNode.replaceChild(fragment, node);
+          } else if (node.nodeType === Node.ELEMENT_NODE) {
+            Array.from(node.childNodes).forEach(wrapWords);
+          }
+        }
+
+        // Heading reveal (h1, h2)
+        const headings = document.querySelectorAll('h1, h2');
+        headings.forEach(heading => {
+          if (heading.closest('#cookie-consent-banner')) return;
+          wrapWords(heading);
+          const words = heading.querySelectorAll('.gsap-reveal-word');
+          if (words.length === 0) return;
+
+          gsap.fromTo(words,
+            { y: '120%', opacity: 0, filter: 'blur(10px)' },
+            {
+              y: '0%',
+              opacity: 1,
+              filter: 'blur(0px)',
+              duration: 1.1,
+              stagger: 0.04,
+              ease: 'power3.out',
+              scrollTrigger: {
+                trigger: heading,
+                start: 'top 92%',
+                toggleActions: 'play none none none'
+              }
+            }
+          );
+        });
+
+        // Fade-in de elementos gerais (ignora header, nav, footer, banners e elementos ocultos)
+        const fadeElements = document.querySelectorAll('main p:not(.hidden):not([id^="err-"]), article, section .group:not(a), h3, h4, details');
+        fadeElements.forEach(el => {
+          if (el.closest('header') || el.closest('nav') || el.closest('footer') || el.closest('#cookie-consent-banner') || el.classList.contains('hidden')) return;
+          gsap.fromTo(el,
+            { y: 35, opacity: 0, filter: 'blur(6px)' },
+            {
+              y: 0,
+              opacity: 1,
+              filter: 'blur(0px)',
+              duration: 0.9,
+              ease: 'power2.out',
+              scrollTrigger: {
+                trigger: el,
+                start: 'top 92%',
+                toggleActions: 'play none none none'
+              }
+            }
+          );
+        });
+
+        // Fade-in suave para a seção de proposta e footer
+        const bottomSections = document.querySelectorAll('#proposta, footer');
+        bottomSections.forEach(section => {
+          gsap.fromTo(section,
+            { y: 30, opacity: 0 },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 1,
+              ease: 'power2.out',
+              scrollTrigger: {
+                trigger: section,
+                start: 'top 96%',
+                toggleActions: 'play none none none'
+              }
+            }
+          );
+        });
+
+        ScrollTrigger.refresh();
+      } catch (err) {
+        console.error('Erro na inicialização do GSAP:', err);
+        revealAllFallback();
+      }
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,17 @@
+/*
+ * main.css
+ * Ponto de entrada único da folha de estilos do projeto.
+ * Importa todos os módulos na ordem correta:
+ *   1. tokens  — custom properties (sem dependências)
+ *   2. global  — reset e estilos base (depende de tokens)
+ *   3. hero-frame — decorações de frame (depende de tokens)
+ *   4. animations — @keyframes e .anim-* (sem dependências de token)
+ *
+ * Para usar: <link rel="stylesheet" href="/css/main.css">
+ * Substituirá os quatro blocos <style> do index.html original.
+ */
+
+@import "./base/tokens.css";
+@import "./base/global.css";
+@import "./hero-frame.css";
+@import "./animations.css";
