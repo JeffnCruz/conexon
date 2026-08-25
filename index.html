@@ -253,7 +253,7 @@
       </header>
 
       <div
-        class="grid gap-12 lg:grid-cols-[0.88fr_1.12fr] lg:pb-32 lg:pt-24 pt-16 pr-16 pb-24 pl-16 gap-x-12 gap-y-12 items-center">
+        class="grid gap-12 lg:grid-cols-[0.88fr_1.12fr] lg:pb-24 lg:pt-24 pt-16 pr-16 pb-20 pl-16 gap-x-12 gap-y-12 items-center">
         <div class="max-w-3xl">
           <div
             class="mb-7 inline-flex items-center gap-3 text-sm font-semibold uppercase tracking-[0.08em] text-blue-700">
@@ -314,16 +314,19 @@
         </div>
         <!-- Hero Image -->
         <div
-          class="relative mx-auto h-[620px] w-full max-w-[760px] overflow-hidden rounded-[18px] border border-slate-200 shadow-[0_16px_44px_rgba(15,23,42,0.07)]">
+          class="relative mx-auto aspect-[4/3] w-full max-w-[760px] overflow-hidden rounded-[18px] border border-slate-200 shadow-[0_16px_44px_rgba(15,23,42,0.07)] lg:h-[620px] lg:aspect-auto">
           <img src="assets/images/hero-conexon.webp"
             alt="Corredor de supermercado com tela de mídia indoor suspensa, totem digital e cartazes de oferta nas gôndolas"
-            width="1520" height="1240" class="h-full w-full object-cover">
+            width="1520" height="1240" class="h-full w-full object-cover object-[center_30%] lg:object-center">
         </div>
       </div>
 
+      <!-- Divisor sutil entre Hero e Cards de Soluções -->
+      <div class="w-full border-t border-[var(--color-border-frame)]" aria-hidden="true"></div>
+
       <!-- Cards de Produto (Roteador) -->
       <div id="solucoes"
-        class="grid md:grid-cols-3 lg:pb-20 lg:pt-16 lg:pl-16 lg:pr-16 pt-16 pr-16 pb-20 pl-16 gap-x-5 gap-y-5 items-stretch">
+        class="grid md:grid-cols-3 lg:pb-20 lg:pt-24 lg:pl-16 lg:pr-16 pt-20 pr-16 pb-20 pl-16 gap-x-5 gap-y-5 items-stretch">
         <!-- Card 1: Mídia Indoor -->
         <a href="#midia-indoor"
           class="group flex flex-col h-full overflow-hidden rounded-[18px] border border-slate-200 bg-white/78 shadow-[0_12px_34px_rgba(15,23,42,0.035)] backdrop-blur transition hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-[0_18px_42px_rgba(15,23,42,0.06)]">

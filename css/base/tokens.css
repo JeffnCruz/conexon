@@ -48,8 +48,9 @@
   --color-border-icon:      #dce6ff;
   /* Borda do ícone no hover do botão secundário */
   --color-border-icon-hover: #b8c9ff;
-  /* Linha decorativa do frame/guia */
+  /* Linha decorativa do frame/guia e divisores de seção */
   --color-border-frame:     rgba(148, 163, 184, 0.26);
+  --color-border-divider:   rgba(148, 163, 184, 0.26);
 
 
   /* ─── Texto ────────────────────────────────────────────────────────────── */
