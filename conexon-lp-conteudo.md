@@ -213,6 +213,22 @@ CTA: `Solicitar proposta de cartazeamento`
 
 ---
 
+## 7.5. Seção Quem somos
+
+**Eyebrow**
+QUEM SOMOS
+
+**H2**
+Três frentes, **um só fornecedor.**
+
+**Parágrafo 1**
+A ConexOn é uma **editora e gráfica** especializada em comunicação para pontos comerciais, atuando em três frentes complementares: edição e impressão de publicações e material gráfico, locação de equipamentos de mídia indoor e desenvolvimento e licenciamento de software.
+
+**Parágrafo 2**
+Essa combinação permite entregar toda a comunicação visual do ponto de venda, cobrindo do material impresso às telas digitais e totens interativos com um único fornecedor, da concepção do projeto até a execução final.
+
+---
+
 ## 8. Seção Para quem é
 
 **Eyebrow**
