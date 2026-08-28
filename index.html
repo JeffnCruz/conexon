@@ -199,7 +199,7 @@
         class="pointer-events-none absolute right-5 top-0 hidden h-full w-px bg-slate-200/80 sm:right-9 md:block lg:right-16">
       </div>
       <header
-        class="flex border-slate-200/80 border-b items-center justify-between py-5 sm:py-7 lg:py-8 lg:px-16">
+        class="relative flex border-slate-200/80 border-b items-center justify-between py-5 sm:py-7 lg:py-8 lg:px-16">
         <a href="/" class="flex items-center" aria-label="ConexOn — tecnologia para comunicação digital">
           <svg xmlns="http://www.w3.org/2000/svg" width="712" height="139" fill="none" viewBox="0 0 712 139"
             class="h-7 w-auto sm:h-8" role="img" aria-label="ConexOn — tecnologia para comunicação digital">
@@ -245,10 +245,56 @@
             </span>
           </a>
           <button
-            class="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-950 shadow-sm xl:hidden"
-            aria-label="Open menu">
-            <i data-lucide="menu" class="h-5 w-5"></i>
+            id="mobile-menu-toggle"
+            class="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-950 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 xl:hidden"
+            aria-label="Abrir menu de navegação"
+            aria-expanded="false"
+            aria-controls="mobile-menu">
+            <i data-lucide="menu" class="h-5 w-5 menu-icon-open"></i>
+            <i data-lucide="x" class="h-5 w-5 menu-icon-close hidden"></i>
           </button>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu"
+          class="hidden absolute left-0 top-full z-50 w-full border-b border-slate-200/90 bg-white shadow-2xl xl:hidden"
+          aria-hidden="true">
+          <div class="flex flex-col gap-2 p-6 sm:p-8">
+            <nav class="flex flex-col gap-1 text-base font-medium text-slate-900" aria-label="Navegação móvel">
+              <a href="#solucoes"
+                class="mobile-menu-link flex min-h-[44px] items-center rounded-xl px-4 text-slate-900 transition-colors hover:bg-slate-50 hover:text-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500">
+                Soluções
+              </a>
+              <a href="#segmentos"
+                class="mobile-menu-link flex min-h-[44px] items-center rounded-xl px-4 text-slate-900 transition-colors hover:bg-slate-50 hover:text-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500">
+                Para quem é
+              </a>
+              <a href="#formatos"
+                class="mobile-menu-link flex min-h-[44px] items-center rounded-xl px-4 text-slate-900 transition-colors hover:bg-slate-50 hover:text-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500">
+                Como contratar
+              </a>
+              <a href="#faq"
+                class="mobile-menu-link flex min-h-[44px] items-center rounded-xl px-4 text-slate-900 transition-colors hover:bg-slate-50 hover:text-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500">
+                Dúvidas
+              </a>
+            </nav>
+            <div class="mt-3 pt-4 border-t border-slate-100">
+              <a href="#proposta"
+                class="mobile-menu-link group inline-flex h-13 min-h-[44px] w-full items-center justify-center overflow-hidden rounded-[16px] bg-gradient-to-br from-[var(--color-action-from)] via-[var(--color-action-mid)] to-[var(--color-action-to)] px-6 text-[16px] font-semibold tracking-[-0.02em] text-white shadow-[0_18px_38px_rgba(0,87,255,0.28),inset_0_1px_0_rgba(255,255,255,0.32)] transition-all duration-300 hover:shadow-[0_22px_48px_rgba(0,87,255,0.36),inset_0_1px_0_rgba(255,255,255,0.38)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-500/25 focus-visible:ring-offset-2 active:scale-[0.99]"
+                aria-label="Solicitar proposta">
+                <span class="relative z-10 whitespace-nowrap">Solicitar proposta</span>
+                <span
+                  class="relative z-10 ml-3 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-[12px] border border-white/15 bg-white/15 shadow-[inset_0_1px_0_rgba(255,255,255,0.32)] backdrop-blur-md transition-all duration-300 group-hover:translate-x-0.5 group-hover:bg-white/22">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                    stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
+                    class="h-4 w-4">
+                    <path d="M7 7h10v10"></path>
+                    <path d="M7 17 17 7"></path>
+                  </svg>
+                </span>
+              </a>
+            </div>
+          </div>
         </div>
       </header>
 
@@ -2478,6 +2524,159 @@
         revealAllFallback();
       }
     });
+  </script>
+  <script type="module" src="js/main.js"></script>
+  <script>
+    (function () {
+      function setupMobileMenu() {
+        const toggleBtn = document.getElementById('mobile-menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (!toggleBtn || !mobileMenu) return;
+
+        const menuIconOpen = toggleBtn.querySelector('.menu-icon-open');
+        const menuIconClose = toggleBtn.querySelector('.menu-icon-close');
+        const menuLinks = mobileMenu.querySelectorAll('a');
+
+        let isOpen = false;
+
+        function openMenu() {
+          if (isOpen) return;
+          isOpen = true;
+
+          mobileMenu.classList.remove('hidden');
+          mobileMenu.setAttribute('aria-hidden', 'false');
+
+          toggleBtn.setAttribute('aria-expanded', 'true');
+          toggleBtn.setAttribute('aria-label', 'Fechar menu de navegação');
+
+          if (menuIconOpen && menuIconClose) {
+            menuIconOpen.classList.add('hidden');
+            menuIconClose.classList.remove('hidden');
+          }
+
+          document.body.style.overflow = 'hidden';
+
+          if (window.gsap) {
+            window.gsap.fromTo(
+              mobileMenu,
+              { opacity: 0, y: -10 },
+              { opacity: 1, y: 0, duration: 0.25, ease: 'power2.out' }
+            );
+          } else {
+            mobileMenu.style.opacity = '1';
+            mobileMenu.style.transform = 'translateY(0)';
+          }
+
+          const firstLink = menuLinks[0];
+          if (firstLink) {
+            setTimeout(() => firstLink.focus(), 60);
+          }
+        }
+
+        function closeMenu(returnFocusToToggle = false) {
+          if (!isOpen) return;
+          isOpen = false;
+
+          toggleBtn.setAttribute('aria-expanded', 'false');
+          toggleBtn.setAttribute('aria-label', 'Abrir menu de navegação');
+
+          if (menuIconOpen && menuIconClose) {
+            menuIconOpen.classList.remove('hidden');
+            menuIconClose.classList.add('hidden');
+          }
+
+          document.body.style.overflow = '';
+
+          const finalizeClose = () => {
+            mobileMenu.classList.add('hidden');
+            mobileMenu.setAttribute('aria-hidden', 'true');
+            if (returnFocusToToggle) {
+              toggleBtn.focus();
+            }
+          };
+
+          if (window.gsap) {
+            window.gsap.to(mobileMenu, {
+              opacity: 0,
+              y: -10,
+              duration: 0.2,
+              ease: 'power2.in',
+              onComplete: finalizeClose
+            });
+          } else {
+            finalizeClose();
+          }
+        }
+
+        toggleBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          if (isOpen) {
+            closeMenu(false);
+          } else {
+            openMenu();
+          }
+        });
+
+        menuLinks.forEach((link) => {
+          link.addEventListener('click', (e) => {
+            const href = link.getAttribute('href');
+            closeMenu(false);
+
+            if (href && href.startsWith('#')) {
+              const targetEl = document.querySelector(href);
+              if (targetEl) {
+                e.preventDefault();
+                setTimeout(() => {
+                  targetEl.scrollIntoView({ behavior: 'smooth' });
+                }, 50);
+              }
+            }
+          });
+        });
+
+        document.addEventListener('click', (e) => {
+          if (isOpen && !mobileMenu.contains(e.target) && !toggleBtn.contains(e.target)) {
+            closeMenu(false);
+          }
+        });
+
+        document.addEventListener('keydown', (e) => {
+          if (isOpen && e.key === 'Escape') {
+            closeMenu(true);
+          }
+        });
+
+        mobileMenu.addEventListener('keydown', (e) => {
+          if (e.key === 'Tab') {
+            const focusables = Array.from(menuLinks);
+            if (focusables.length === 0) return;
+            const first = focusables[0];
+            const last = focusables[focusables.length - 1];
+
+            if (e.shiftKey && document.activeElement === first) {
+              e.preventDefault();
+              last.focus();
+            } else if (!e.shiftKey && document.activeElement === last) {
+              e.preventDefault();
+              first.focus();
+            }
+          }
+        });
+
+        window.addEventListener('resize', () => {
+          if (isOpen && window.innerWidth >= 1280) {
+            closeMenu(false);
+          }
+        });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', setupMobileMenu);
+      } else {
+        setupMobileMenu();
+      }
+    })();
   </script>
 </body>
 
