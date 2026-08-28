@@ -1023,6 +1023,190 @@
         </div>
       </div>
     </div>
+  <!-- Seção 7.5: Quem somos -->
+  <section id="quem-somos" class="relative overflow-hidden bg-white">
+    <div class="px-5 sm:px-9 lg:px-16 w-full max-w-[1600px] mx-auto relative">
+      <div
+        class="pointer-events-none absolute left-6 top-0 hidden h-full w-px bg-slate-200/80 sm:left-9 md:block lg:left-16">
+      </div>
+      <div
+        class="pointer-events-none absolute right-6 top-0 hidden h-full w-px bg-slate-200/80 sm:right-9 md:block lg:right-16">
+      </div>
+
+      <div class="relative border-y border-slate-200/80">
+        <!-- section header -->
+        <div class="grid gap-8 px-0 py-20 md:grid-cols-[0.9fr_1fr] md:items-end lg:px-12 lg:py-24">
+          <div class="">
+            <div
+              class="mb-6 inline-flex items-center gap-2.5 text-xs font-semibold uppercase tracking-[0.1em] text-blue-700">
+              <i data-lucide="building-2" class="h-4 w-4"></i>
+              QUEM SOMOS
+            </div>
+
+            <h2
+              class="max-w-[620px] text-4xl font-semibold leading-[1.14] tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
+              Três frentes, <span class="text-blue-700">um só fornecedor.</span>
+            </h2>
+          </div>
+
+          <p class="max-w-[460px] text-base leading-7 text-slate-500 md:justify-self-end">
+            A ConexOn atua em três frentes complementares da comunicação para pontos comerciais: edição e impressão de
+            publicações e material gráfico, locação de equipamentos de mídia indoor, e desenvolvimento e licenciamento
+            de software. Essa combinação permite entregar toda a comunicação visual do ponto de venda — do material
+            impresso à tela digital ao totem interativo — com um único fornecedor.
+          </p>
+        </div>
+
+        <!-- corpo: gráfico + três frentes -->
+        <div class="grid border-t border-slate-200/80 lg:grid-cols-2 lg:items-center">
+
+          <!-- gráfico orbital -->
+          <div
+            class="qs-graphic relative flex min-h-[380px] w-full items-center justify-center overflow-hidden border-b border-slate-200/80 lg:border-b-0 lg:border-r"
+            style="perspective: 1200px;" aria-hidden="true">
+
+            <style>
+              @keyframes qs-grid-pan {
+                0%   { transform: translateY(0); }
+                100% { transform: translateY(24px); }
+              }
+              @keyframes qs-orbit-spin {
+                0%   { transform: rotateX(65deg) rotateZ(0deg); }
+                100% { transform: rotateX(65deg) rotateZ(360deg); }
+              }
+              @keyframes qs-orbit-spin-reverse {
+                0%   { transform: rotateX(65deg) rotateZ(360deg); }
+                100% { transform: rotateX(65deg) rotateZ(0deg); }
+              }
+              @keyframes qs-pulse-aura {
+                0%, 100% { opacity: .3; filter: blur(24px); transform: scale(1); }
+                50%      { opacity: .7; filter: blur(32px); transform: scale(1.3); }
+              }
+              @keyframes qs-float-y {
+                0%, 100% { transform: translateY(0); }
+                50%      { transform: translateY(-12px); }
+              }
+              .qs-scene { transform-style: preserve-3d; }
+
+              @media (prefers-reduced-motion: reduce) {
+                .qs-graphic [style*="qs-"] { animation: none !important; }
+              }
+            </style>
+
+            <!-- fundo de pontos -->
+            <div class="pointer-events-none absolute -inset-[50%] opacity-40 will-change-transform"
+              style="background-image: radial-gradient(rgba(148,163,184,0.6) 1px, transparent 1px); background-size: 24px 24px; animation: qs-grid-pan 3s linear infinite;">
+            </div>
+
+            <!-- anéis orbitais -->
+            <div class="qs-scene pointer-events-none absolute inset-0 flex items-center justify-center">
+              <div
+                class="absolute h-[320px] w-[320px] rounded-full border-[1.5px] border-dashed border-slate-300 shadow-[inset_0_0_30px_rgba(148,163,184,0.15)] will-change-transform"
+                style="animation: qs-orbit-spin 24s linear infinite;"></div>
+              <div
+                class="absolute h-[180px] w-[180px] rounded-full border-[1.5px] border-dashed border-[#00B4FF]/50 shadow-[inset_0_0_20px_rgba(0,180,255,0.2)] will-change-transform"
+                style="animation: qs-orbit-spin-reverse 16s linear infinite;"></div>
+            </div>
+
+            <!-- cruz de guias -->
+            <div
+              class="pointer-events-none absolute bottom-0 left-1/2 top-0 w-px -translate-x-1/2 border-l border-dashed border-slate-200/80">
+            </div>
+            <div
+              class="pointer-events-none absolute left-0 right-0 top-1/2 h-px -translate-y-1/2 border-t border-dashed border-slate-200/80">
+            </div>
+
+            <!-- hub central: símbolo X da ConexOn -->
+            <div
+              class="group relative z-10 flex h-[104px] w-[104px] items-center justify-center rounded-2xl bg-white/90 shadow-[0_0_40px_rgba(0,87,255,0.15),inset_0_0_20px_rgba(255,255,255,0.9)] ring-1 ring-slate-100 backdrop-blur-md transition-all duration-500 hover:scale-110 hover:shadow-[0_0_60px_rgba(0,87,255,0.25)] will-change-transform"
+              style="animation: qs-float-y 5s ease-in-out infinite;">
+              <div class="absolute -inset-8 rounded-full bg-[var(--color-primary)]/25 will-change-transform"
+                style="animation: qs-pulse-aura 4s ease-in-out infinite; z-index: -1;"></div>
+
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 164 121" fill="none"
+                class="relative z-10 h-11 w-auto transition-transform duration-500 group-hover:rotate-180">
+                <path fill="#0d1321" d="m42.221 0 60.903 61.721-34.102 35.726h-40.61L62.526 62.54 0 0z" />
+                <path fill="#00b4ff"
+                  d="m89.596 41.282 25.177-25.177h33.296l-41.415 42.234zM88.83 82.832l17.864-17.863L163.543 121h-36.544z" />
+              </svg>
+            </div>
+
+            <!-- satélite: edição e impressão -->
+            <div class="absolute left-1/2 top-8 z-20 -translate-x-1/2">
+              <div
+                class="group relative flex h-12 w-12 items-center justify-center rounded-xl border border-slate-100 bg-white/80 text-blue-700 shadow-[0_15px_30px_rgba(15,23,42,0.08)] backdrop-blur-sm transition-transform hover:scale-110 hover:bg-white will-change-transform"
+                style="animation: qs-float-y 4s ease-in-out infinite; animation-delay: .5s;">
+                <div class="absolute inset-0 rounded-xl bg-[#00B4FF]/10 blur-lg transition-opacity group-hover:bg-[#00B4FF]/20"></div>
+                <i data-lucide="printer" class="h-5 w-5"></i>
+              </div>
+            </div>
+
+            <!-- satélite: locação de equipamentos -->
+            <div class="absolute left-8 top-1/2 z-20 -translate-y-1/2">
+              <div
+                class="group relative flex h-12 w-12 items-center justify-center rounded-xl border border-slate-100 bg-white/80 text-blue-700 shadow-[0_15px_30px_rgba(15,23,42,0.08)] backdrop-blur-sm transition-transform hover:scale-110 hover:bg-white will-change-transform"
+                style="animation: qs-float-y 4s ease-in-out infinite; animation-delay: 1s;">
+                <div class="absolute inset-0 rounded-xl bg-[#00B4FF]/10 blur-lg transition-opacity group-hover:bg-[#00B4FF]/20"></div>
+                <i data-lucide="monitor" class="h-5 w-5"></i>
+              </div>
+            </div>
+
+            <!-- satélite: tecnologia e software -->
+            <div class="absolute right-8 top-1/2 z-20 -translate-y-1/2">
+              <div
+                class="group relative flex h-12 w-12 items-center justify-center rounded-xl border border-slate-100 bg-white/80 text-blue-700 shadow-[0_15px_30px_rgba(15,23,42,0.08)] backdrop-blur-sm transition-transform hover:scale-110 hover:bg-white will-change-transform"
+                style="animation: qs-float-y 4s ease-in-out infinite; animation-delay: 2s;">
+                <div class="absolute inset-0 rounded-xl bg-[#00B4FF]/10 blur-lg transition-opacity group-hover:bg-[#00B4FF]/20"></div>
+                <i data-lucide="code-xml" class="h-5 w-5"></i>
+              </div>
+            </div>
+          </div>
+
+          <!-- as três frentes -->
+          <div class="divide-y divide-slate-200/80">
+            <div class="flex items-start gap-5 px-6 py-8 sm:px-10 lg:px-12 lg:py-10">
+              <span
+                class="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-blue-50 text-[var(--color-primary)]">
+                <i data-lucide="printer" class="h-5 w-5"></i>
+              </span>
+              <div>
+                <p class="text-lg font-semibold text-[var(--color-brand-deep)]">Edição e impressão</p>
+                <p class="mt-2 text-sm leading-6 text-slate-500">
+                  Publicações e material gráfico produzidos no ponto comercial.
+                </p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-5 px-6 py-8 sm:px-10 lg:px-12 lg:py-10">
+              <span
+                class="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-blue-50 text-[var(--color-primary)]">
+                <i data-lucide="monitor" class="h-5 w-5"></i>
+              </span>
+              <div>
+                <p class="text-lg font-semibold text-[var(--color-brand-deep)]">Locação de equipamentos</p>
+                <p class="mt-2 text-sm leading-6 text-slate-500">
+                  Telas, players, totens e impressoras — você não compra equipamento.
+                </p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-5 px-6 py-8 sm:px-10 lg:px-12 lg:py-10">
+              <span
+                class="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-blue-50 text-[var(--color-primary)]">
+                <i data-lucide="code-xml" class="h-5 w-5"></i>
+              </span>
+              <div>
+                <p class="text-lg font-semibold text-[var(--color-brand-deep)]">Tecnologia e software</p>
+                <p class="mt-2 text-sm leading-6 text-slate-500">
+                  Desenvolvimento, licenciamento e suporte das plataformas de gestão.
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- Seção 8: Para quem é -->
